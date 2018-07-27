@@ -1,0 +1,12 @@
+*.so
+*.pdf
+*.htm*
+*.css
+*.bin
+*.tar
+*.zip
+*.dll
+*.o
+*OmnidriverSamples*
+
+

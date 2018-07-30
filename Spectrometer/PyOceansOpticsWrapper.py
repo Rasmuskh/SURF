@@ -742,8 +742,8 @@ class OceansOpticsWrapper:
         """Private method: load the OO libraries.
         @return none
         """
-        self.libOmniDriver = cdll.LoadLibrary('/home/tango-cs/OmniDriverSPAM/OOI_HOME/libOmniDriver.so')
-        self.libCommon = cdll.LoadLibrary('/home/tango-cs/OmniDriverSPAM/OOI_HOME/libcommon.so')
+        self.libOmniDriver = cdll.LoadLibrary('./libw.so')
+        self.libCommon = cdll.LoadLibrary('./libw.so')
     
     def __redirectDllOutput(self):
         """Private method: redirect the dll stdout and stderr to a log file (only windows).

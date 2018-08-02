@@ -454,7 +454,7 @@ class OceansOpticsWrapper:
         tstart = time.clock()
         self.libOmniDriver.Wrapper_getSpectrum(self.dllWrapper, c_int(index), self.dllDoubleArray)
         tend = time.clock()
-        print "%.4gs" % (tend-tstart)
+        #print "%.4gs" % (tend-tstart)
         return self.__DoubleArrayToArray()
     
     def GetNumberOfPixels(self, index = None):

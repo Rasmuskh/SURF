@@ -3,7 +3,6 @@
 #               Pump Communication               #
 #                                                #
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-import sys
 import serial as sr
 
 #Establish communication line

@@ -32,8 +32,7 @@ RELEASE    = Release_$(MAJOR_VERS)_$(MINOR_VERS)
 #	Set default home directories
 #-----------------------------------------
 
-#TANGO_HOME   =  @prefix@
-TANGO_HOME   =  /home/tango-cs/src/tango-9.2.5a
+TANGO_HOME   =  @prefix@
 CPP_SERVERS  =  $(TANGO_HOME)/cppserver
 
 ifdef no_debug
@@ -61,14 +60,13 @@ VERS_OPT = -Wl,-soname,
 endif
 
 INCLUDE_DIRS =  -I$(TANGO_HOME)/include \
-		-I@ORB_PREFIX@/include \
-		-I.	\
-                -I$(CPP_SERVERS)/include        \
-                -I/usr/local/include/tango
+					 -I@ORB_PREFIX@/include \
+					 -I.	\
+                -I$(CPP_SERVERS)/include
 
 OBJS_DIR    = obj
 LIB_DIRS    = -L $(TANGO_HOME)/lib \
-              -L @ORB_PREFIX@/lib
+				  -L @ORB_PREFIX@/lib
 
 TARGET_LIB = $(CPP_SERVERS)/lib/libtgclasses.a
 
@@ -76,22 +74,21 @@ TARGET_LIB = $(CPP_SERVERS)/lib/libtgclasses.a
 #-----------------------------------------
 #	Set  CXXFLAGS and LFLAGS
 #-----------------------------------------
-#ifdef _solaris
-#CXXFLAGS =  $(DEBUG) -mt -D_PTHREADS $(INCLUDE_DIRS)
-#LFLAGS =  $(DEBUG) $(LIB_DIRS)  		\
-#				-ltango			\
-#				-llog4tango		\
-#				-lomniORB4 		\
-#				-lomniDynamic4	\
-#				-lomnithread	\
-#				-lCOS4			\
-#				-lpthread		\
-#				-lposix4 -lsocket -lnsl
-#endif
+ifdef _solaris
+CXXFLAGS =  $(DEBUG) -mt -D_PTHREADS $(INCLUDE_DIRS)
+LFLAGS =  $(DEBUG) $(LIB_DIRS)  		\
+				-ltango			\
+				-llog4tango		\
+				-lomniORB4 		\
+				-lomniDynamic4	\
+				-lomnithread	\
+				-lCOS4			\
+				-lpthread		\
+				-lposix4 -lsocket -lnsl
+endif
 
 ifdef linux
-CXXFLAGS =  $(DEBUG) -D_REENTRANT $(INCLUDE_DIRS) -std=c++11
-				 			
+CXXFLAGS =  $(DEBUG) -D_REENTRANT $(INCLUDE_DIRS)
 LFLAGS =  $(DEBUG) $(LIB_DIRS)  		\
 				-ltango			\
 				-llog4tango		\

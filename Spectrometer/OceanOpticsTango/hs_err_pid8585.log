@@ -1,0 +1,718 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f389c5c8952, pid=8585, tid=0x00007f3878fff700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_171-b11) (build 1.8.0_171-8u171-b11-0ubuntu0.16.04.1-b11)
+# Java VM: OpenJDK 64-Bit Server VM (25.171-b11 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libOmniDriver.so+0x3f3952]  Wrapper::openAllSpectrometers()+0x10
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f384400c800):  JavaThread "Thread-1" [_thread_in_native, id=8705, stack(0x00007f38787ff000,0x00007f3879000000)]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x000000004400e7c8
+
+Registers:
+RAX=0x000000004400e3c0, RBX=0x00007f3878ffcab0, RCX=0x00007f3878ffcb20, RDX=0x000000000000000a
+RSP=0x00007f3878ffca60, RBP=0x00007f3878ffca80, RSI=0x00007f38a6688e40, RDI=0x000000004400e3c0
+R8 =0x00007f3878ffcaf0, R9 =0x00007f38a66888ab, R10=0x00007f3878ffca00, R11=0x00007f389c5cf292
+R12=0x0000000000000000, R13=0x00007f3878ffcbc8, R14=0x00007f3878ffcb40, R15=0x00007f3878ffcba8
+RIP=0x00007f389c5c8952, EFLAGS=0x0000000000010206, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f3878ffca60)
+0x00007f3878ffca60:   00007f38ad840c10 000000004400e3c0
+0x00007f3878ffca70:   00007f38a0b92690 bd7efe0766a6e800
+0x00007f3878ffca80:   00007f3878ffcaa0 00007f389c5cf2aa
+0x00007f3878ffca90:   0000000000000000 000000004400e3c0
+0x00007f3878ffcaa0:   00007f3878ffcab0 00007f38a6688e40
+0x00007f3878ffcab0:   000000000000000a 00007f3878ffcbe0
+0x00007f3878ffcac0:   00007f3878ffcb90 00007f38a66888ab
+0x00007f3878ffcad0:   00007f3878ffcc90 00007f3878ffcb18
+0x00007f3878ffcae0:   00007f3878ffcb20 00007f389c5cf292
+0x00007f3878ffcaf0:   00007f3878ffcbe0 00007f3878ffca00
+0x00007f3878ffcb00:   00007f3800000000 00007f3878ffcc90
+0x00007f3878ffcb10:   0000000000000001 00007f3878ffcba8
+0x00007f3878ffcb20:   00007f3878ffcb38 00007f3878ffcb3c
+0x00007f3878ffcb30:   0000000002078240 0000000000000001
+0x00007f3878ffcb40:   0000003000000001 00007f3878ffcc90
+0x00007f3878ffcb50:   00007f3878ffccf0 bd7efe0766a6e800
+0x00007f3878ffcb60:   00007f3878ffcbc0 00007f3878ffcc90
+0x00007f3878ffcb70:   0000000000000000 00007f3878ffcbc0
+0x00007f3878ffcb80:   0000000000000001 00007f3878ffcbe0
+0x00007f3878ffcb90:   00007f3878ffccf0 00007f38a68983df
+0x00007f3878ffcba0:   00007f38a6aa9630 000000000049e41d
+0x00007f3878ffcbb0:   00007f3878ffcc20 00007f38a6897aa0
+0x00007f3878ffcbc0:   00007f3878ffcc10 00007f38a68a09e3
+0x00007f3878ffcbd0:   00007f38a6aaa2e0 00007f3878ffcc20
+0x00007f3878ffcbe0:   00007f3878ffccf0 00007f38a6897aee
+0x00007f3878ffcbf0:   0000000000000002 00007f38a68980b6
+0x00007f3878ffcc00:   00007f38a6aa9630 00007f38a0b9ab70
+0x00007f3878ffcc10:   000000004400e3c0 0000000000000000
+0x00007f3878ffcc20:   0000000000000000 00000000004d0c6d
+0x00007f3878ffcc30:   00007f384400d940 0000000000000000
+0x00007f3878ffcc40:   00007f389c5cf292 00007f3800001101
+0x00007f3878ffcc50:   0000000002078240 00007f3878ffcc00 
+
+Instructions: (pc=0x00007f389c5c8952)
+0x00007f389c5c8932:   80 08 04 00 00 48 89 c7 e8 d1 ed db ff 90 c9 c3
+0x00007f389c5c8942:   55 48 89 e5 48 83 ec 20 48 89 7d e8 48 8b 45 e8
+0x00007f389c5c8952:   48 8b 80 08 04 00 00 48 89 c7 e8 7f 02 dc ff 48
+0x00007f389c5c8962:   89 45 f8 48 8b 45 e8 48 8b 88 60 04 00 00 48 8b 
+
+Register to memory mapping:
+
+RAX=0x000000004400e3c0 is an unknown value
+RBX=0x00007f3878ffcab0 is pointing into the stack for thread: 0x00007f384400c800
+RCX=0x00007f3878ffcb20 is pointing into the stack for thread: 0x00007f384400c800
+RDX=0x000000000000000a is an unknown value
+RSP=0x00007f3878ffca60 is pointing into the stack for thread: 0x00007f384400c800
+RBP=0x00007f3878ffca80 is pointing into the stack for thread: 0x00007f384400c800
+RSI=0x00007f38a6688e40: ffi_call_unix64+0x4c in /usr/lib/x86_64-linux-gnu/libffi.so.6 at 0x00007f38a6683000
+RDI=0x000000004400e3c0 is an unknown value
+R8 =0x00007f3878ffcaf0 is pointing into the stack for thread: 0x00007f384400c800
+R9 =0x00007f38a66888ab: ffi_call+0x2eb in /usr/lib/x86_64-linux-gnu/libffi.so.6 at 0x00007f38a6683000
+R10=0x00007f3878ffca00 is pointing into the stack for thread: 0x00007f384400c800
+R11=0x00007f389c5cf292: Wrapper_openAllSpectrometers+0 in /home/tango-cs/OmniDriverSPAM/OOI_HOME/libOmniDriver.so at 0x00007f389c1d5000
+R12=0x0000000000000000 is an unknown value
+R13=0x00007f3878ffcbc8 is pointing into the stack for thread: 0x00007f384400c800
+R14=0x00007f3878ffcb40 is pointing into the stack for thread: 0x00007f384400c800
+R15=0x00007f3878ffcba8 is pointing into the stack for thread: 0x00007f384400c800
+
+
+Stack: [0x00007f38787ff000,0x00007f3879000000],  sp=0x00007f3878ffca60,  free space=8182k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libOmniDriver.so+0x3f3952]  Wrapper::openAllSpectrometers()+0x10
+C  [libOmniDriver.so+0x3fa2aa]  Wrapper_openAllSpectrometers+0x18
+C  [libffi.so.6+0x5e40]  ffi_call_unix64+0x4c
+C  0x00007f3878ffcbe0
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+=>0x00007f384400c800 JavaThread "Thread-1" [_thread_in_native, id=8705, stack(0x00007f38787ff000,0x00007f3879000000)]
+  0x0000000004af3000 JavaThread "Service Thread" daemon [_thread_blocked, id=8606, stack(0x00007f388cc8e000,0x00007f388cd8f000)]
+  0x0000000004ae8000 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=8605, stack(0x00007f388cd8f000,0x00007f388ce90000)]
+  0x0000000004ae5800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=8604, stack(0x00007f388ce90000,0x00007f388cf91000)]
+  0x0000000004ae4000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=8603, stack(0x00007f388cf91000,0x00007f388d092000)]
+  0x0000000004ab3000 JavaThread "Finalizer" daemon [_thread_blocked, id=8602, stack(0x00007f388d092000,0x00007f388d193000)]
+  0x0000000004aae000 JavaThread "Reference Handler" daemon [_thread_blocked, id=8601, stack(0x00007f388d193000,0x00007f388d294000)]
+
+Other Threads:
+  0x0000000004aa6800 VMThread [stack: 0x00007f388d294000,0x00007f388d395000] [id=8600]
+  0x0000000004af5800 WatcherThread [stack: 0x00007f388cb8d000,0x00007f388cc8e000] [id=8607]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 18432K, used 1353K [0x00000000fad00000, 0x00000000fc180000, 0x0000000100000000)
+  eden space 15872K, 2% used [0x00000000fad00000,0x00000000fad76418,0x00000000fbc80000)
+  from space 2560K, 34% used [0x00000000fbc80000,0x00000000fbd5c010,0x00000000fbf00000)
+  to   space 2560K, 0% used [0x00000000fbf00000,0x00000000fbf00000,0x00000000fc180000)
+ ParOldGen       total 42496K, used 8K [0x00000000f0600000, 0x00000000f2f80000, 0x00000000fad00000)
+  object space 42496K, 0% used [0x00000000f0600000,0x00000000f0602000,0x00000000f2f80000)
+ Metaspace       used 5092K, capacity 6348K, committed 6656K, reserved 1056768K
+  class space    used 591K, capacity 648K, committed 768K, reserved 1048576K
+
+Card table byte_map: [0x00007f389c157000,0x00007f389c1d5000] byte_map_base: 0x00007f389b9d4000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f388ffe3320
+ Begin Bits: [0x00007f388dde1000, 0x00007f388e1c9000)
+ End Bits:   [0x00007f388e1c9000, 0x00007f388e5b1000)
+
+Polling page: 0x00007f38ad8e5000
+
+CodeCache: size=245760Kb used=1552Kb max_used=1554Kb free=244207Kb
+ bounds [0x00007f3879000000, 0x00007f3879270000, 0x00007f3888000000]
+ total_blobs=486 nmethods=232 adapters=169
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.455 Thread 0x0000000004ae8000 nmethod 226 0x00007f3879180c50 code [0x00007f3879180de0, 0x00007f3879181148]
+Event: 0.459 Thread 0x0000000004ae5800 nmethod 224% 0x00007f3879184450 code [0x00007f38791845c0, 0x00007f3879184b78]
+Event: 0.459 Thread 0x0000000004ae5800  228       4       java.lang.String::lastIndexOf (52 bytes)
+Event: 0.460 Thread 0x0000000004ae5800 nmethod 228 0x00007f3879181290 code [0x00007f38791813e0, 0x00007f3879181538]
+Event: 0.470 Thread 0x0000000004ae8000  229   !   3       java.lang.ref.Reference::tryHandlePending (115 bytes)
+Event: 0.471 Thread 0x0000000004ae8000 nmethod 229 0x00007f3879182d10 code [0x00007f3879182f40, 0x00007f3879183be8]
+Event: 0.471 Thread 0x0000000004ae8000  232       3       sun.misc.VM::addFinalRefCount (24 bytes)
+Event: 0.471 Thread 0x0000000004ae8000 nmethod 232 0x00007f3879182990 code [0x00007f3879182b00, 0x00007f3879182cb0]
+Event: 0.471 Thread 0x0000000004ae8000  231   !   3       java.lang.ref.ReferenceQueue::enqueue (119 bytes)
+Event: 0.471 Thread 0x0000000004ae8000 nmethod 231 0x00007f3879181e90 code [0x00007f3879182040, 0x00007f38791827a8]
+
+GC Heap History (2 events):
+Event: 0.468 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 18432K, used 15872K [0x00000000fad00000, 0x00000000fc180000, 0x0000000100000000)
+  eden space 15872K, 100% used [0x00000000fad00000,0x00000000fbc80000,0x00000000fbc80000)
+  from space 2560K, 0% used [0x00000000fbf00000,0x00000000fbf00000,0x00000000fc180000)
+  to   space 2560K, 0% used [0x00000000fbc80000,0x00000000fbc80000,0x00000000fbf00000)
+ ParOldGen       total 42496K, used 0K [0x00000000f0600000, 0x00000000f2f80000, 0x00000000fad00000)
+  object space 42496K, 0% used [0x00000000f0600000,0x00000000f0600000,0x00000000f2f80000)
+ Metaspace       used 5089K, capacity 6348K, committed 6656K, reserved 1056768K
+  class space    used 591K, capacity 648K, committed 768K, reserved 1048576K
+Event: 0.470 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 18432K, used 880K [0x00000000fad00000, 0x00000000fc180000, 0x0000000100000000)
+  eden space 15872K, 0% used [0x00000000fad00000,0x00000000fad00000,0x00000000fbc80000)
+  from space 2560K, 34% used [0x00000000fbc80000,0x00000000fbd5c010,0x00000000fbf00000)
+  to   space 2560K, 0% used [0x00000000fbf00000,0x00000000fbf00000,0x00000000fc180000)
+ ParOldGen       total 42496K, used 8K [0x00000000f0600000, 0x00000000f2f80000, 0x00000000fad00000)
+  object space 42496K, 0% used [0x00000000f0600000,0x00000000f0602000,0x00000000f2f80000)
+ Metaspace       used 5089K, capacity 6348K, committed 6656K, reserved 1056768K
+  class space    used 591K, capacity 648K, committed 768K, reserved 1048576K
+}
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad02ae8) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad02f50) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad033b8) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad03820) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad03c88) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad040f0) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad04558) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad049c0) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad04e28) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 0.471 Thread 0x0000000003f99800 Exception <a 'java/io/IOException': No Device Found> (0x00000000fad05290) thrown at [/build/openjdk-8-wnL82d/openjdk-8-8u171-b11/src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+
+Events (10 events):
+Event: 0.464 loading class com/oceanoptics/omnidriver/spectrometer/mayapro2000/MayaPro2000
+Event: 0.464 loading class com/oceanoptics/omnidriver/spectrometer/mayapro2000/MayaPro2000 done
+Event: 0.466 loading class com/oceanoptics/omnidriver/spectrometer/nirquest/nirquest256/NIRQuest256
+Event: 0.466 loading class com/oceanoptics/omnidriver/spectrometer/nirquest/nirquest256/NIRQuest256 done
+Event: 0.468 Executing VM operation: ParallelGCFailedAllocation
+Event: 0.470 Executing VM operation: ParallelGCFailedAllocation done
+Event: 0.471 Thread 0x0000000003f99800 Thread exited: 0x0000000003f99800
+Event: 4.184 Executing VM operation: EnableBiasedLocking
+Event: 4.184 Executing VM operation: EnableBiasedLocking done
+Event: 48.944 Thread 0x00007f384400c800 Thread added: 0x00007f384400c800
+
+
+Dynamic libraries:
+00400000-006de000 r-xp 00000000 fd:00 660314                             /usr/bin/python2.7
+008dd000-008de000 r--p 002dd000 fd:00 660314                             /usr/bin/python2.7
+008de000-00955000 rw-p 002de000 fd:00 660314                             /usr/bin/python2.7
+00955000-00978000 rw-p 00000000 00:00 0 
+01f23000-04c56000 rw-p 00000000 00:00 0                                  [heap]
+f0600000-f2f80000 rw-p 00000000 00:00 0 
+f2f80000-fad00000 ---p 00000000 00:00 0 
+fad00000-fc180000 rw-p 00000000 00:00 0 
+fc180000-100000000 ---p 00000000 00:00 0 
+100000000-1000c0000 rw-p 00000000 00:00 0 
+1000c0000-140000000 ---p 00000000 00:00 0 
+7f3844000000-7f3844021000 rw-p 00000000 00:00 0 
+7f3844021000-7f3848000000 ---p 00000000 00:00 0 
+7f384c000000-7f384c021000 rw-p 00000000 00:00 0 
+7f384c021000-7f3850000000 ---p 00000000 00:00 0 
+7f3850000000-7f3850021000 rw-p 00000000 00:00 0 
+7f3850021000-7f3854000000 ---p 00000000 00:00 0 
+7f3854000000-7f385405b000 rw-p 00000000 00:00 0 
+7f385405b000-7f3858000000 ---p 00000000 00:00 0 
+7f3858000000-7f385818c000 rw-p 00000000 00:00 0 
+7f385818c000-7f385c000000 ---p 00000000 00:00 0 
+7f385c000000-7f385c021000 rw-p 00000000 00:00 0 
+7f385c021000-7f3860000000 ---p 00000000 00:00 0 
+7f3860000000-7f3860021000 rw-p 00000000 00:00 0 
+7f3860021000-7f3864000000 ---p 00000000 00:00 0 
+7f3864000000-7f3864021000 rw-p 00000000 00:00 0 
+7f3864021000-7f3868000000 ---p 00000000 00:00 0 
+7f3868000000-7f3868021000 rw-p 00000000 00:00 0 
+7f3868021000-7f386c000000 ---p 00000000 00:00 0 
+7f386c000000-7f386c021000 rw-p 00000000 00:00 0 
+7f386c021000-7f3870000000 ---p 00000000 00:00 0 
+7f3874000000-7f3874021000 rw-p 00000000 00:00 0 
+7f3874021000-7f3878000000 ---p 00000000 00:00 0 
+7f38787ff000-7f3878802000 ---p 00000000 00:00 0 
+7f3878802000-7f3879000000 rw-p 00000000 00:00 0 
+7f3879000000-7f3879270000 rwxp 00000000 00:00 0 
+7f3879270000-7f3888000000 ---p 00000000 00:00 0 
+7f3888000000-7f3888021000 rw-p 00000000 00:00 0 
+7f3888021000-7f388c000000 ---p 00000000 00:00 0 
+7f388c77f000-7f388c786000 r-xp 00000000 fd:00 918170                     /lib/x86_64-linux-gnu/libusb-0.1.so.4.4.4
+7f388c786000-7f388c985000 ---p 00007000 fd:00 918170                     /lib/x86_64-linux-gnu/libusb-0.1.so.4.4.4
+7f388c985000-7f388c986000 r--p 00006000 fd:00 918170                     /lib/x86_64-linux-gnu/libusb-0.1.so.4.4.4
+7f388c986000-7f388c987000 rw-p 00007000 fd:00 918170                     /lib/x86_64-linux-gnu/libusb-0.1.so.4.4.4
+7f388c987000-7f388c988000 rw-p 00000000 00:00 0 
+7f388c988000-7f388c98c000 r-xp 00000000 fd:00 825271                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libNatUSB.so
+7f388c98c000-7f388cb8b000 ---p 00004000 fd:00 825271                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libNatUSB.so
+7f388cb8b000-7f388cb8c000 r--p 00003000 fd:00 825271                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libNatUSB.so
+7f388cb8c000-7f388cb8d000 rw-p 00004000 fd:00 825271                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libNatUSB.so
+7f388cb8d000-7f388cb8e000 ---p 00000000 00:00 0 
+7f388cb8e000-7f388cc8e000 rw-p 00000000 00:00 0 
+7f388cc8e000-7f388cc91000 ---p 00000000 00:00 0 
+7f388cc91000-7f388cd8f000 rw-p 00000000 00:00 0 
+7f388cd8f000-7f388cd92000 ---p 00000000 00:00 0 
+7f388cd92000-7f388ce90000 rw-p 00000000 00:00 0 
+7f388ce90000-7f388ce93000 ---p 00000000 00:00 0 
+7f388ce93000-7f388cf91000 rw-p 00000000 00:00 0 
+7f388cf91000-7f388cf94000 ---p 00000000 00:00 0 
+7f388cf94000-7f388d092000 rw-p 00000000 00:00 0 
+7f388d092000-7f388d095000 ---p 00000000 00:00 0 
+7f388d095000-7f388d193000 rw-p 00000000 00:00 0 
+7f388d193000-7f388d196000 ---p 00000000 00:00 0 
+7f388d196000-7f388d294000 rw-p 00000000 00:00 0 
+7f388d294000-7f388d295000 ---p 00000000 00:00 0 
+7f388d295000-7f388d395000 rw-p 00000000 00:00 0 
+7f388d395000-7f388d564000 r--s 03c2f000 fd:00 777693                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+7f388d564000-7f388db24000 rw-p 00000000 00:00 0 
+7f388db24000-7f388dd64000 ---p 00000000 00:00 0 
+7f388dd64000-7f388e5b1000 rw-p 00000000 00:00 0 
+7f388e5b1000-7f388e5b2000 ---p 00000000 00:00 0 
+7f388e5b2000-7f388e6bc000 rw-p 00000000 00:00 0 
+7f388e6bc000-7f388ea72000 ---p 00000000 00:00 0 
+7f388ea72000-7f388ea7a000 r-xp 00000000 fd:00 676893                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libzip.so
+7f388ea7a000-7f388ec79000 ---p 00008000 fd:00 676893                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libzip.so
+7f388ec79000-7f388ec7a000 r--p 00007000 fd:00 676893                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libzip.so
+7f388ec7a000-7f388ec7b000 rw-p 00008000 fd:00 676893                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libzip.so
+7f388ec7b000-7f388eca8000 r-xp 00000000 fd:00 676884                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libjava.so
+7f388eca8000-7f388eea7000 ---p 0002d000 fd:00 676884                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libjava.so
+7f388eea7000-7f388eea8000 r--p 0002c000 fd:00 676884                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libjava.so
+7f388eea8000-7f388eeaa000 rw-p 0002d000 fd:00 676884                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libjava.so
+7f388eeaa000-7f388eeb9000 r-xp 00000000 fd:00 676870                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libverify.so
+7f388eeb9000-7f388f0b8000 ---p 0000f000 fd:00 676870                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libverify.so
+7f388f0b8000-7f388f0ba000 r--p 0000e000 fd:00 676870                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libverify.so
+7f388f0ba000-7f388f0bb000 rw-p 00010000 fd:00 676870                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/libverify.so
+7f388f0bb000-7f388fd14000 r-xp 00000000 fd:00 676897                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f388fd14000-7f388ff14000 ---p 00c59000 fd:00 676897                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f388ff14000-7f388ffa7000 r--p 00c59000 fd:00 676897                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f388ffa7000-7f388ffd0000 rw-p 00cec000 fd:00 676897                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f388ffd0000-7f3890000000 rw-p 00000000 00:00 0 
+7f3890000000-7f3890021000 rw-p 00000000 00:00 0 
+7f3890021000-7f3894000000 ---p 00000000 00:00 0 
+7f3894000000-7f3894098000 rw-p 00000000 00:00 0 
+7f3894098000-7f3898000000 ---p 00000000 00:00 0 
+7f3898000000-7f3898021000 rw-p 00000000 00:00 0 
+7f3898021000-7f389c000000 ---p 00000000 00:00 0 
+7f389c002000-7f389c003000 ---p 00000000 00:00 0 
+7f389c003000-7f389c118000 rw-p 00000000 00:00 0 
+7f389c118000-7f389c157000 ---p 00000000 00:00 0 
+7f389c157000-7f389c16c000 rw-p 00000000 00:00 0 
+7f389c16c000-7f389c1aa000 ---p 00000000 00:00 0 
+7f389c1aa000-7f389c1b5000 rw-p 00000000 00:00 0 
+7f389c1b5000-7f389c1d4000 ---p 00000000 00:00 0 
+7f389c1d4000-7f389c1d5000 rw-p 00000000 00:00 0 
+7f389c1d5000-7f389c6c2000 r-xp 00000000 fd:00 825294                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libOmniDriver.so
+7f389c6c2000-7f389c8c2000 ---p 004ed000 fd:00 825294                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libOmniDriver.so
+7f389c8c2000-7f389c8cd000 r--p 004ed000 fd:00 825294                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libOmniDriver.so
+7f389c8cd000-7f389c8dc000 rw-p 004f8000 fd:00 825294                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libOmniDriver.so
+7f389c8dc000-7f389c91c000 r-xp 00000000 fd:00 825295                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libcommon.so
+7f389c91c000-7f389cb1b000 ---p 00040000 fd:00 825295                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libcommon.so
+7f389cb1b000-7f389cb1c000 r--p 0003f000 fd:00 825295                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libcommon.so
+7f389cb1c000-7f389cb1d000 rw-p 00040000 fd:00 825295                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/libcommon.so
+7f389cb1d000-7f389cb1f000 r-xp 00000000 fd:00 976263                     /home/tango-cs/Documents/Spectrometer/OceanOpticsTango/libw.so
+7f389cb1f000-7f389cd1e000 ---p 00002000 fd:00 976263                     /home/tango-cs/Documents/Spectrometer/OceanOpticsTango/libw.so
+7f389cd1e000-7f389cd1f000 r--p 00001000 fd:00 976263                     /home/tango-cs/Documents/Spectrometer/OceanOpticsTango/libw.so
+7f389cd1f000-7f389cd20000 rw-p 00002000 fd:00 976263                     /home/tango-cs/Documents/Spectrometer/OceanOpticsTango/libw.so
+7f389cd20000-7f389cd21000 ---p 00000000 00:00 0 
+7f389cd21000-7f389d521000 rw-p 00000000 00:00 0 
+7f389d521000-7f389d522000 ---p 00000000 00:00 0 
+7f389d522000-7f389dd22000 rw-p 00000000 00:00 0 
+7f389dd22000-7f389dd23000 ---p 00000000 00:00 0 
+7f389dd23000-7f389e523000 rw-p 00000000 00:00 0 
+7f389e523000-7f389e524000 ---p 00000000 00:00 0 
+7f389e524000-7f389ed24000 rw-p 00000000 00:00 0 
+7f389ed24000-7f389ed25000 ---p 00000000 00:00 0 
+7f389ed25000-7f389f525000 rw-p 00000000 00:00 0 
+7f389f525000-7f389f526000 ---p 00000000 00:00 0 
+7f389f526000-7f389fd26000 rw-p 00000000 00:00 0 
+7f389fd26000-7f389fd3d000 r-xp 00000000 fd:00 948151                     /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f389fd3d000-7f389ff3d000 ---p 00017000 fd:00 948151                     /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f389ff3d000-7f389ff3e000 r--p 00017000 fd:00 948151                     /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f389ff3e000-7f389ff3f000 rw-p 00018000 fd:00 948151                     /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f389ff3f000-7f389ff41000 rw-p 00000000 00:00 0 
+7f389ff41000-7f389ff46000 r-xp 00000000 fd:00 948207                     /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f389ff46000-7f38a0146000 ---p 00005000 fd:00 948207                     /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f38a0146000-7f38a0147000 r--p 00005000 fd:00 948207                     /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f38a0147000-7f38a0148000 rw-p 00006000 fd:00 948207                     /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f38a0148000-7f38a014a000 r-xp 00000000 fd:00 918097                     /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f38a014a000-7f38a0349000 ---p 00002000 fd:00 918097                     /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f38a0349000-7f38a034a000 r--p 00001000 fd:00 918097                     /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f38a034a000-7f38a034b000 rw-p 00002000 fd:00 918097                     /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f38a034b000-7f38a0356000 r-xp 00000000 fd:00 949315                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f38a0356000-7f38a0555000 ---p 0000b000 fd:00 949315                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f38a0555000-7f38a0556000 r--p 0000a000 fd:00 949315                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f38a0556000-7f38a0557000 rw-p 0000b000 fd:00 949315                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f38a0557000-7f38a055d000 rw-p 00000000 00:00 0 
+7f38a055d000-7f38a0568000 r-xp 00000000 fd:00 949358                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f38a0568000-7f38a0767000 ---p 0000b000 fd:00 949358                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f38a0767000-7f38a0768000 r--p 0000a000 fd:00 949358                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f38a0768000-7f38a0769000 rw-p 0000b000 fd:00 949358                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f38a0769000-7f38a077f000 r-xp 00000000 fd:00 920920                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f38a077f000-7f38a097e000 ---p 00016000 fd:00 920920                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f38a097e000-7f38a097f000 r--p 00015000 fd:00 920920                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f38a097f000-7f38a0980000 rw-p 00016000 fd:00 920920                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f38a0980000-7f38a0982000 rw-p 00000000 00:00 0 
+7f38a0982000-7f38a098a000 r-xp 00000000 fd:00 948159                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f38a098a000-7f38a0b89000 ---p 00008000 fd:00 948159                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f38a0b89000-7f38a0b8a000 r--p 00007000 fd:00 948159                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f38a0b8a000-7f38a0b8b000 rw-p 00008000 fd:00 948159                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f38a0b8b000-7f38a0bcb000 rw-p 00000000 00:00 0 
+7f38a0bcb000-7f38a0bd7000 r-xp 00000000 fd:00 783295                     /usr/lib/python2.7/lib-dynload/_json.x86_64-linux-gnu.so
+7f38a0bd7000-7f38a0dd6000 ---p 0000c000 fd:00 783295                     /usr/lib/python2.7/lib-dynload/_json.x86_64-linux-gnu.so
+7f38a0dd6000-7f38a0dd7000 r--p 0000b000 fd:00 783295                     /usr/lib/python2.7/lib-dynload/_json.x86_64-linux-gnu.so
+7f38a0dd7000-7f38a0dd8000 rw-p 0000c000 fd:00 783295                     /usr/lib/python2.7/lib-dynload/_json.x86_64-linux-gnu.so
+7f38a0dd8000-7f38a0f98000 rw-p 00000000 00:00 0 
+7f38a0f98000-7f38a0f9e000 r-xp 00000000 fd:00 783303                     /usr/lib/python2.7/lib-dynload/_multiprocessing.x86_64-linux-gnu.so
+7f38a0f9e000-7f38a119d000 ---p 00006000 fd:00 783303                     /usr/lib/python2.7/lib-dynload/_multiprocessing.x86_64-linux-gnu.so
+7f38a119d000-7f38a119e000 r--p 00005000 fd:00 783303                     /usr/lib/python2.7/lib-dynload/_multiprocessing.x86_64-linux-gnu.so
+7f38a119e000-7f38a119f000 rw-p 00006000 fd:00 783303                     /usr/lib/python2.7/lib-dynload/_multiprocessing.x86_64-linux-gnu.so
+7f38a119f000-7f38a11df000 rw-p 00000000 00:00 0 
+7f38a11df000-7f38a123d000 r-xp 00000000 fd:00 917584                     /lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f38a123d000-7f38a143d000 ---p 0005e000 fd:00 917584                     /lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f38a143d000-7f38a1441000 r--p 0005e000 fd:00 917584                     /lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f38a1441000-7f38a1448000 rw-p 00062000 fd:00 917584                     /lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f38a1448000-7f38a145d000 r-xp 00000000 fd:00 783324                     /usr/lib/python2.7/lib-dynload/_ssl.x86_64-linux-gnu.so
+7f38a145d000-7f38a165c000 ---p 00015000 fd:00 783324                     /usr/lib/python2.7/lib-dynload/_ssl.x86_64-linux-gnu.so
+7f38a165c000-7f38a165d000 r--p 00014000 fd:00 783324                     /usr/lib/python2.7/lib-dynload/_ssl.x86_64-linux-gnu.so
+7f38a165d000-7f38a1661000 rw-p 00015000 fd:00 783324                     /usr/lib/python2.7/lib-dynload/_ssl.x86_64-linux-gnu.so
+7f38a1661000-7f38a1961000 rw-p 00000000 00:00 0 
+7f38a1961000-7f38a1968000 r-xp 00000000 fd:00 949459                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f38a1968000-7f38a1b67000 ---p 00007000 fd:00 949459                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f38a1b67000-7f38a1b68000 r--p 00006000 fd:00 949459                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f38a1b68000-7f38a1b69000 rw-p 00007000 fd:00 949459                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f38a1b69000-7f38a1bc6000 r-xp 00000000 fd:00 678876                     /usr/lib/x86_64-linux-gnu/libsodium.so.18.0.1
+7f38a1bc6000-7f38a1dc5000 ---p 0005d000 fd:00 678876                     /usr/lib/x86_64-linux-gnu/libsodium.so.18.0.1
+7f38a1dc5000-7f38a1dc6000 r--p 0005c000 fd:00 678876                     /usr/lib/x86_64-linux-gnu/libsodium.so.18.0.1
+7f38a1dc6000-7f38a1dc7000 rw-p 0005d000 fd:00 678876                     /usr/lib/x86_64-linux-gnu/libsodium.so.18.0.1
+7f38a1dc7000-7f38a24a5000 r-xp 00000000 fd:00 680045                     /usr/lib/libCOS4.so.1.6
+7f38a24a5000-7f38a26a4000 ---p 006de000 fd:00 680045                     /usr/lib/libCOS4.so.1.6
+7f38a26a4000-7f38a2836000 r--p 006dd000 fd:00 680045                     /usr/lib/libCOS4.so.1.6
+7f38a2836000-7f38a283d000 rw-p 0086f000 fd:00 680045                     /usr/lib/libCOS4.so.1.6
+7f38a283d000-7f38a283f000 rw-p 00000000 00:00 0 
+7f38a283f000-7f38a28a1000 r-xp 00000000 fd:00 678878                     /usr/lib/x86_64-linux-gnu/libzmq.so.5.0.0
+7f38a28a1000-7f38a2aa0000 ---p 00062000 fd:00 678878                     /usr/lib/x86_64-linux-gnu/libzmq.so.5.0.0
+7f38a2aa0000-7f38a2aa4000 r--p 00061000 fd:00 678878                     /usr/lib/x86_64-linux-gnu/libzmq.so.5.0.0
+7f38a2aa4000-7f38a2aa5000 rw-p 00065000 fd:00 678878                     /usr/lib/x86_64-linux-gnu/libzmq.so.5.0.0
+7f38a2aa5000-7f38a2abb000 r-xp 00000000 fd:00 918030                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f38a2abb000-7f38a2cba000 ---p 00016000 fd:00 918030                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f38a2cba000-7f38a2cbb000 rw-p 00015000 fd:00 918030                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f38a2cbb000-7f38a2e2d000 r-xp 00000000 fd:00 654649                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f38a2e2d000-7f38a302d000 ---p 00172000 fd:00 654649                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f38a302d000-7f38a3037000 r--p 00172000 fd:00 654649                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f38a3037000-7f38a3039000 rw-p 0017c000 fd:00 654649                     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f38a3039000-7f38a303d000 rw-p 00000000 00:00 0 
+7f38a303d000-7f38a3054000 r-xp 00000000 fd:00 680511                     /usr/local/lib/liblog4tango.so.5.0.1
+7f38a3054000-7f38a3254000 ---p 00017000 fd:00 680511                     /usr/local/lib/liblog4tango.so.5.0.1
+7f38a3254000-7f38a3255000 r--p 00017000 fd:00 680511                     /usr/local/lib/liblog4tango.so.5.0.1
+7f38a3255000-7f38a3256000 rw-p 00018000 fd:00 680511                     /usr/local/lib/liblog4tango.so.5.0.1
+7f38a3256000-7f38a325b000 r-xp 00000000 fd:00 677872                     /usr/lib/libomnithread.so.3.4
+7f38a325b000-7f38a345a000 ---p 00005000 fd:00 677872                     /usr/lib/libomnithread.so.3.4
+7f38a345a000-7f38a345b000 r--p 00004000 fd:00 677872                     /usr/lib/libomnithread.so.3.4
+7f38a345b000-7f38a345c000 rw-p 00005000 fd:00 677872                     /usr/lib/libomnithread.so.3.4
+7f38a345c000-7f38a35e6000 r-xp 00000000 fd:00 679991                     /usr/lib/libomniORB4.so.1.6
+7f38a35e6000-7f38a37e6000 ---p 0018a000 fd:00 679991                     /usr/lib/libomniORB4.so.1.6
+7f38a37e6000-7f38a37f9000 r--p 0018a000 fd:00 679991                     /usr/lib/libomniORB4.so.1.6
+7f38a37f9000-7f38a37fd000 rw-p 0019d000 fd:00 679991                     /usr/lib/libomniORB4.so.1.6
+7f38a37fd000-7f38a3800000 rw-p 00000000 00:00 0 
+7f38a3800000-7f38a3a52000 r-xp 00000000 fd:00 680037                     /usr/lib/libomniDynamic4.so.1.6
+7f38a3a52000-7f38a3c51000 ---p 00252000 fd:00 680037                     /usr/lib/libomniDynamic4.so.1.6
+7f38a3c51000-7f38a3cc1000 r--p 00251000 fd:00 680037                     /usr/lib/libomniDynamic4.so.1.6
+7f38a3cc1000-7f38a3cc5000 rw-p 002c1000 fd:00 680037                     /usr/lib/libomniDynamic4.so.1.6
+7f38a3cc5000-7f38a3cc6000 rw-p 00000000 00:00 0 
+7f38a3cc6000-7f38a3d0f000 r-xp 00000000 fd:00 691765                     /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.58.0
+7f38a3d0f000-7f38a3f0f000 ---p 00049000 fd:00 691765                     /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.58.0
+7f38a3f0f000-7f38a3f10000 r--p 00049000 fd:00 691765                     /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.58.0
+7f38a3f10000-7f38a3f12000 rw-p 0004a000 fd:00 691765                     /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.58.0
+7f38a3f12000-7f38a4512000 r-xp 00000000 fd:00 680670                     /usr/local/lib/libtango.so.9.2.5
+7f38a4512000-7f38a4712000 ---p 00600000 fd:00 680670                     /usr/local/lib/libtango.so.9.2.5
+7f38a4712000-7f38a4740000 r--p 00600000 fd:00 680670                     /usr/local/lib/libtango.so.9.2.5
+7f38a4740000-7f38a4749000 rw-p 0062e000 fd:00 680670                     /usr/local/lib/libtango.so.9.2.5
+7f38a4749000-7f38a474c000 rw-p 00000000 00:00 0 
+7f38a474c000-7f38a4ec8000 r-xp 00000000 fd:00 692438                     /usr/local/lib/python2.7/dist-packages/tango/_tango.so
+7f38a4ec8000-7f38a50c8000 ---p 0077c000 fd:00 692438                     /usr/local/lib/python2.7/dist-packages/tango/_tango.so
+7f38a50c8000-7f38a5100000 r--p 0077c000 fd:00 692438                     /usr/local/lib/python2.7/dist-packages/tango/_tango.so
+7f38a5100000-7f38a511c000 rw-p 007b4000 fd:00 692438                     /usr/local/lib/python2.7/dist-packages/tango/_tango.so
+7f38a511c000-7f38a51a0000 rw-p 00000000 00:00 0 
+7f38a51be000-7f38a51d8000 r--s 002a6000 fd:00 825296                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/OmniDriver.jar
+7f38a51d8000-7f38a5291000 r-xp 00000000 fd:00 864136                     /usr/local/lib/python2.7/dist-packages/numpy/random/mtrand.so
+7f38a5291000-7f38a5491000 ---p 000b9000 fd:00 864136                     /usr/local/lib/python2.7/dist-packages/numpy/random/mtrand.so
+7f38a5491000-7f38a54b6000 rw-p 000b9000 fd:00 864136                     /usr/local/lib/python2.7/dist-packages/numpy/random/mtrand.so
+7f38a54b6000-7f38a54f8000 rw-p 00000000 00:00 0 
+7f38a54f8000-7f38a5501000 r-xp 00000000 fd:00 863981                     /usr/local/lib/python2.7/dist-packages/numpy/fft/fftpack_lite.so
+7f38a5501000-7f38a5700000 ---p 00009000 fd:00 863981                     /usr/local/lib/python2.7/dist-packages/numpy/fft/fftpack_lite.so
+7f38a5700000-7f38a5701000 rw-p 00008000 fd:00 863981                     /usr/local/lib/python2.7/dist-packages/numpy/fft/fftpack_lite.so
+7f38a5701000-7f38a5741000 rw-p 00000000 00:00 0 
+7f38a5741000-7f38a5742000 r-xp 00000000 fd:00 783315                     /usr/lib/python2.7/lib-dynload/future_builtins.x86_64-linux-gnu.so
+7f38a5742000-7f38a5941000 ---p 00001000 fd:00 783315                     /usr/lib/python2.7/lib-dynload/future_builtins.x86_64-linux-gnu.so
+7f38a5941000-7f38a5942000 r--p 00000000 fd:00 783315                     /usr/lib/python2.7/lib-dynload/future_builtins.x86_64-linux-gnu.so
+7f38a5942000-7f38a5943000 rw-p 00001000 fd:00 783315                     /usr/lib/python2.7/lib-dynload/future_builtins.x86_64-linux-gnu.so
+7f38a5943000-7f38a596c000 r-xp 00000000 fd:00 864402                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/_umath_linalg.so
+7f38a596c000-7f38a5b6b000 ---p 00029000 fd:00 864402                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/_umath_linalg.so
+7f38a5b6b000-7f38a5b6d000 rw-p 00028000 fd:00 864402                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/_umath_linalg.so
+7f38a5b6d000-7f38a5b70000 rw-p 000c7000 fd:00 864402                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/_umath_linalg.so
+7f38a5b70000-7f38a5b74000 r-xp 00000000 fd:00 864408                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/lapack_lite.so
+7f38a5b74000-7f38a5d74000 ---p 00004000 fd:00 864408                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/lapack_lite.so
+7f38a5d74000-7f38a5d75000 rw-p 00004000 fd:00 864408                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/lapack_lite.so
+7f38a5d75000-7f38a5d77000 rw-p 00019000 fd:00 864408                     /usr/local/lib/python2.7/dist-packages/numpy/linalg/lapack_lite.so
+7f38a5d77000-7f38a5df7000 rw-p 00000000 00:00 0 
+7f38a5df7000-7f38a6011000 r-xp 00000000 fd:00 917583                     /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f38a6011000-7f38a6210000 ---p 0021a000 fd:00 917583                     /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f38a6210000-7f38a622c000 r--p 00219000 fd:00 917583                     /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f38a622c000-7f38a6238000 rw-p 00235000 fd:00 917583                     /lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f38a6238000-7f38a623b000 rw-p 00000000 00:00 0 
+7f38a623b000-7f38a6241000 r-xp 00000000 fd:00 783329                     /usr/lib/python2.7/lib-dynload/_hashlib.x86_64-linux-gnu.so
+7f38a6241000-7f38a6440000 ---p 00006000 fd:00 783329                     /usr/lib/python2.7/lib-dynload/_hashlib.x86_64-linux-gnu.so
+7f38a6440000-7f38a6441000 r--p 00005000 fd:00 783329                     /usr/lib/python2.7/lib-dynload/_hashlib.x86_64-linux-gnu.so
+7f38a6441000-7f38a6442000 rw-p 00006000 fd:00 783329                     /usr/lib/python2.7/lib-dynload/_hashlib.x86_64-linux-gnu.so
+7f38a6442000-7f38a6683000 rw-p 00000000 00:00 0 
+7f38a6683000-7f38a668a000 r-xp 00000000 fd:00 663437                     /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f38a668a000-7f38a6889000 ---p 00007000 fd:00 663437                     /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f38a6889000-7f38a688a000 r--p 00006000 fd:00 663437                     /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f38a688a000-7f38a688b000 rw-p 00007000 fd:00 663437                     /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f38a688b000-7f38a68a9000 r-xp 00000000 fd:00 783302                     /usr/lib/python2.7/lib-dynload/_ctypes.x86_64-linux-gnu.so
+7f38a68a9000-7f38a6aa8000 ---p 0001e000 fd:00 783302                     /usr/lib/python2.7/lib-dynload/_ctypes.x86_64-linux-gnu.so
+7f38a6aa8000-7f38a6aa9000 r--p 0001d000 fd:00 783302                     /usr/lib/python2.7/lib-dynload/_ctypes.x86_64-linux-gnu.so
+7f38a6aa9000-7f38a6aad000 rw-p 0001e000 fd:00 783302                     /usr/lib/python2.7/lib-dynload/_ctypes.x86_64-linux-gnu.so
+7f38a6aad000-7f38a6c45000 r-xp 00000000 fd:00 864188                     /usr/local/lib/python2.7/dist-packages/numpy/core/umath.so
+7f38a6c45000-7f38a6e45000 ---p 00198000 fd:00 864188                     /usr/local/lib/python2.7/dist-packages/numpy/core/umath.so
+7f38a6e45000-7f38a6e4b000 rw-p 00198000 fd:00 864188                     /usr/local/lib/python2.7/dist-packages/numpy/core/umath.so
+7f38a6e4b000-7f38a6e8d000 rw-p 00000000 00:00 0 
+7f38a6e8d000-7f38a8e8d000 rw-p 00000000 00:00 0 
+7f38a8e8d000-7f38a8e8e000 ---p 00000000 00:00 0 
+7f38a8e8e000-7f38a968e000 rw-p 00000000 00:00 0 
+7f38a968e000-7f38a977e000 r-xp 00000000 fd:00 864434                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libgfortran-ed201abd.so.3.0.0
+7f38a977e000-7f38a997d000 ---p 000f0000 fd:00 864434                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libgfortran-ed201abd.so.3.0.0
+7f38a997d000-7f38a997f000 rw-p 000ef000 fd:00 864434                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libgfortran-ed201abd.so.3.0.0
+7f38a997f000-7f38a9980000 rw-p 00000000 00:00 0 
+7f38a9980000-7f38a9988000 rw-p 000f2000 fd:00 864434                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libgfortran-ed201abd.so.3.0.0
+7f38a9988000-7f38abc9c000 r-xp 00000000 fd:00 864433                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libopenblasp-r0-39a31c03.2.18.so
+7f38abc9c000-7f38abe9b000 ---p 02314000 fd:00 864433                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libopenblasp-r0-39a31c03.2.18.so
+7f38abe9b000-7f38abeba000 rw-p 02313000 fd:00 864433                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libopenblasp-r0-39a31c03.2.18.so
+7f38abeba000-7f38abf1d000 rw-p 00000000 00:00 0 
+7f38abf1d000-7f38abfb3000 rw-p 02425000 fd:00 864433                     /usr/local/lib/python2.7/dist-packages/numpy/.libs/libopenblasp-r0-39a31c03.2.18.so
+7f38abfb3000-7f38ac180000 r-xp 00000000 fd:00 864185                     /usr/local/lib/python2.7/dist-packages/numpy/core/multiarray.so
+7f38ac180000-7f38ac37f000 ---p 001cd000 fd:00 864185                     /usr/local/lib/python2.7/dist-packages/numpy/core/multiarray.so
+7f38ac37f000-7f38ac38f000 rw-p 001cc000 fd:00 864185                     /usr/local/lib/python2.7/dist-packages/numpy/core/multiarray.so
+7f38ac38f000-7f38ac3a2000 rw-p 00000000 00:00 0 
+7f38ac3a2000-7f38ac3a8000 rw-p 00920000 fd:00 864185                     /usr/local/lib/python2.7/dist-packages/numpy/core/multiarray.so
+7f38ac3a8000-7f38ac7b1000 r--p 00000000 fd:00 652827                     /usr/lib/locale/locale-archive
+7f38ac7b1000-7f38ac8b9000 r-xp 00000000 fd:00 920919                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f38ac8b9000-7f38acab8000 ---p 00108000 fd:00 920919                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f38acab8000-7f38acab9000 r--p 00107000 fd:00 920919                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f38acab9000-7f38acaba000 rw-p 00108000 fd:00 920919                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f38acaba000-7f38acad3000 r-xp 00000000 fd:00 918183                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f38acad3000-7f38accd2000 ---p 00019000 fd:00 918183                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f38accd2000-7f38accd3000 r--p 00018000 fd:00 918183                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f38accd3000-7f38accd4000 rw-p 00019000 fd:00 918183                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f38accd4000-7f38accd6000 r-xp 00000000 fd:00 948158                     /lib/x86_64-linux-gnu/libutil-2.23.so
+7f38accd6000-7f38aced5000 ---p 00002000 fd:00 948158                     /lib/x86_64-linux-gnu/libutil-2.23.so
+7f38aced5000-7f38aced6000 r--p 00001000 fd:00 948158                     /lib/x86_64-linux-gnu/libutil-2.23.so
+7f38aced6000-7f38aced7000 rw-p 00002000 fd:00 948158                     /lib/x86_64-linux-gnu/libutil-2.23.so
+7f38aced7000-7f38aceda000 r-xp 00000000 fd:00 948111                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f38aceda000-7f38ad0d9000 ---p 00003000 fd:00 948111                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f38ad0d9000-7f38ad0da000 r--p 00002000 fd:00 948111                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f38ad0da000-7f38ad0db000 rw-p 00003000 fd:00 948111                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f38ad0db000-7f38ad29b000 r-xp 00000000 fd:00 948050                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f38ad29b000-7f38ad49b000 ---p 001c0000 fd:00 948050                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f38ad49b000-7f38ad49f000 r--p 001c0000 fd:00 948050                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f38ad49f000-7f38ad4a1000 rw-p 001c4000 fd:00 948050                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f38ad4a1000-7f38ad4a5000 rw-p 00000000 00:00 0 
+7f38ad4a5000-7f38ad4bd000 r-xp 00000000 fd:00 948047                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f38ad4bd000-7f38ad6bc000 ---p 00018000 fd:00 948047                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f38ad6bc000-7f38ad6bd000 r--p 00017000 fd:00 948047                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f38ad6bd000-7f38ad6be000 rw-p 00018000 fd:00 948047                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f38ad6be000-7f38ad6c2000 rw-p 00000000 00:00 0 
+7f38ad6c2000-7f38ad6e8000 r-xp 00000000 fd:00 920921                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f38ad6ed000-7f38ad6ef000 r--s 00008000 fd:00 799646                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/UniUSB.jar
+7f38ad6ef000-7f38ad6f1000 r--s 00006000 fd:00 800412                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/OOIUtils.jar
+7f38ad6f1000-7f38ad6f8000 r--s 00036000 fd:00 799647                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/xstream-1.1.2.jar
+7f38ad6f8000-7f38ad713000 r--s 00394000 fd:00 676862                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/cldrdata.jar
+7f38ad713000-7f38ad7d3000 rw-p 00000000 00:00 0 
+7f38ad7d3000-7f38ad7d5000 r--s 00005000 fd:00 800414                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/xpp3_min-1.1.3.4.M.jar
+7f38ad7d5000-7f38ad7da000 r--s 0005e000 fd:00 825293                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/SPAM.jar
+7f38ad7da000-7f38ad7dd000 r--s 0000f000 fd:00 676864                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/icedtea-sound.jar
+7f38ad7dd000-7f38ad7e7000 r--s 00116000 fd:00 676867                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/localedata.jar
+7f38ad7e7000-7f38ad7e9000 r--s 00001000 fd:00 676860                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/dnsns.jar
+7f38ad7e9000-7f38ad804000 r--s 001d6000 fd:00 676865                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/nashorn.jar
+7f38ad804000-7f38ad8c9000 rw-p 00000000 00:00 0 
+7f38ad8c9000-7f38ad8ca000 r--s 00002000 fd:00 800413                     /home/tango-cs/OmniDriverSPAM/OOI_HOME/HighResTiming.jar
+7f38ad8ca000-7f38ad8cb000 r--s 0000a000 fd:00 676866                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jaccess.jar
+7f38ad8cb000-7f38ad8d1000 r--s 0003b000 fd:00 676863                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunjce_provider.jar
+7f38ad8d1000-7f38ad8d4000 r--s 00038000 fd:00 676861                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunpkcs11.jar
+7f38ad8d4000-7f38ad8d6000 r--s 00008000 fd:00 676858                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunec.jar
+7f38ad8d6000-7f38ad8d7000 r--s 00010000 fd:00 676859                     /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/zipfs.jar
+7f38ad8d7000-7f38ad8dc000 rw-p 00000000 00:00 0 
+7f38ad8dc000-7f38ad8e4000 rw-s 00000000 fd:00 422070                     /tmp/hsperfdata_tango-cs/8585
+7f38ad8e4000-7f38ad8e5000 rw-p 00000000 00:00 0 
+7f38ad8e5000-7f38ad8e6000 r--p 00000000 00:00 0 
+7f38ad8e6000-7f38ad8e7000 rwxp 00000000 00:00 0 
+7f38ad8e7000-7f38ad8e8000 r--p 00025000 fd:00 920921                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f38ad8e8000-7f38ad8e9000 rw-p 00026000 fd:00 920921                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f38ad8e9000-7f38ad8ea000 rw-p 00000000 00:00 0 
+7ffc09cee000-7ffc09deb000 rw-p 00000000 00:00 0                          [stack]
+7ffc09df8000-7ffc09dfb000 r--p 00000000 00:00 0                          [vvar]
+7ffc09dfb000-7ffc09dfd000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Djava.library.path=/home/tango-cs/OmniDriverSPAM/OOI_HOME:/home/tango-cs/OmniDriverSPAM/_jvm/lib/i386:/home/tango-cs/OmniDriverSPAM/_jvm/lib/i386/client -Xmx250m 
+java_command: <unknown>
+java_class_path (initial): /home/tango-cs/OmniDriverSPAM/OOI_HOME/OmniDriver.jar:/home/tango-cs/OmniDriverSPAM/OOI_HOME/SPAM.jar
+Launcher Type: generic
+
+Environment Variables:
+JAVA_HOME=/home/tango-cs/OmniDriverSPAM/_jvm
+PATH=/home/tango-cs/OmniDriverSPAM/_jvm/bin
+LD_LIBRARY_PATH=/home/tango-cs/OmniDriverSPAM/_jvm/lib/i386:/home/tango-cs/OmniDriverSPAM/_jvm/lib/i386/client
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xa6e6f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xa6e6f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x8b5d50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x8b5d50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x8b5d50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x8b5d50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x8b5c00], sa_mask[0]=11100000000001111100111111111100, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x8b60d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x8b60d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x8b60d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x8b60d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.5 LTS"
+
+uname:Linux 4.15.0-29-generic #31~16.04.1-Ubuntu SMP Wed Jul 18 08:54:04 UTC 2018 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 15542, NOFILE 1048576, AS infinity
+load average:0.20 0.17 0.12
+
+/proc/meminfo:
+MemTotal:        4039536 kB
+MemFree:          382900 kB
+MemAvailable:    1612032 kB
+Buffers:           90328 kB
+Cached:          1343460 kB
+SwapCached:            0 kB
+Active:          2681792 kB
+Inactive:         730136 kB
+Active(anon):    1979864 kB
+Inactive(anon):    50204 kB
+Active(file):     701928 kB
+Inactive(file):   679932 kB
+Unevictable:          48 kB
+Mlocked:              48 kB
+SwapTotal:       2097148 kB
+SwapFree:        2097148 kB
+Dirty:                68 kB
+Writeback:             0 kB
+AnonPages:       1978204 kB
+Mapped:           501748 kB
+Shmem:             51932 kB
+Slab:             165544 kB
+SReclaimable:     100704 kB
+SUnreclaim:        64840 kB
+KernelStack:       12364 kB
+PageTables:        38572 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     4116916 kB
+Committed_AS:    7800844 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:      2048 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      151488 kB
+DirectMap2M:     4042752 kB
+
+
+CPU:total 2 (initial active 2) (2 cores per cpu, 1 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, lzcnt, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz
+stepping	: 3
+cpu MHz		: 2793.542
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm invpcid_single pti fsgsbase avx2 invpcid
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 5587.08
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz
+stepping	: 3
+cpu MHz		: 2793.542
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm invpcid_single pti fsgsbase avx2 invpcid
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 5587.08
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 4039536k(382900k free), swap 2097148k(2097148k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.171-b11) for linux-amd64 JRE (1.8.0_171-8u171-b11-0ubuntu0.16.04.1-b11), built on Apr 27 2018 17:19:03 by "buildd" with gcc 5.4.0 20160609
+
+time: Mon Aug  6 09:35:16 2018
+elapsed time: 48 seconds (0d 0h 0m 48s)
+

@@ -1,67 +1,94 @@
 import numpy
 import PyTango
-from PyTango import DispLevel, AttrWriteType, DevState
+from PyTango import DispLevel, AttrWriteType, DevState#, Util, Attr, MultiAttrProp, AttrQuality, AttrWriteType, CmdArgType, UserDefaultAttrProp, DevState
 from PyTango.server import DeviceMeta, Device, server_run
-from PyTango.server import command, attribute, device_property
+from PyTango.server import command, attribute
 
 from PyOceansOpticsWrapper import OceansOpticsWrapper
 
 class OceanOptics(Device):
     """Ocean Optics Spectrometer class"""
 
+#Attributes
     __metaclass__ = DeviceMeta
-    #properties
-    serial_port = device_property(dtype = str, default_value= "HR4C5720")
 
-    #Attributes
-    Index = attribute(label = "index", unit = "", dtype = int,
+    index = attribute(label = "index", unit = "", dtype = int,
                       display_level=DispLevel.EXPERT,
                       access = AttrWriteType.READ,
                       doc = "Spectrometer index")
 
-    IntegrationTime = attribute(label = "Integration time",
+    integrationTime = attribute(label = "Integration time",
                                 display_level=DispLevel.OPERATOR,
                                 unit = "micro seconds", dtype = int,
                                 min_value = 0, access = AttrWriteType.READ_WRITE,
                                 doc = "The Integration time used for acquiring the spectrum")
 
-    DarkCorrection = attribute(label = "Dark correction", unit = "",
+    darkCorrection = attribute(label = "Dark correction", unit = "",
                                display_level=DispLevel.OPERATOR,
-                               dtype = bool, access = AttrWriteType.READ_WRITE,
+                               dtype = int, access = AttrWriteType.READ_WRITE,
+                               min_value = 0, max_value = 1,
                                doc = "electrical dark noise correction")
 
-    NonLinearityCorrection = attribute(label = "Nonlinearity correction", unit = "",
+    nonLinearityCorrection = attribute(label = "Nonlinearity correction", unit = "",
                                display_level=DispLevel.OPERATOR,
-                               dtype = bool, access = AttrWriteType.READ_WRITE,
+                               dtype = int, access = AttrWriteType.READ_WRITE,
+                               min_value = 0, max_value = 1,
                                doc = "Nonlinearity correction")
 
-    StrayLightCorrection = attribute(label = "Stray light correction", unit = "",
+    strayLightCorrection = attribute(label = "Stray light correction", unit = "",
                                      display_level=DispLevel.OPERATOR,
-                                     dtype = bool, access = AttrWriteType.READ,
+                                     dtype = int, access = AttrWriteType.READ,
+                                     min_value = 0, max_value = 1,
                                      doc = "Stray light correction")
 
-    IsSpectrumValid = attribute(label = "Is spectrum Valid?", unit = "",
+    isSpectrumValid = attribute(label = "Is spectrum Valid?", unit = "",
                                 display_level=DispLevel.EXPERT,
                                 dtype = int, access = AttrWriteType.READ,
                                 min_value = 0, max_value = 1,
                                 doc = "Reads if spectrum is valid")
 
-    IsSaturated = attribute(label = "is spectrum saturated?", unit = "",
+    isSaturated = attribute(label = "is spectrum saturated?", unit = "",
                                 display_level=DispLevel.EXPERT,
                                 dtype = int, access = AttrWriteType.READ,
                                 min_value = 0, max_value = 1,
                                 doc = "Reads if spectrum is saturated")
 
+    TimeoutDuration = attribute(label = "Timeout", unit = "miliseconds",
+                                display_level=DispLevel.EXPERT,
+                                dtype = int, access = AttrWriteType.WRITE,
+                                min_value = 0,
+                                doc = "Timeout in miliseconds")
+
+    isTimeoutOn = attribute(label = "is Timeout On", unit = "",
+                            display_level=DispLevel.EXPERT,
+                            dtype = bool, access = AttrWriteType.READ,
+                            doc = "Tells wether timeout is being applied or not.")
 
 
 
-    ScansToAverage = attribute(label = "Scans to average", unit = "", dtype = int,
+    scansToAverage = attribute(label = "Scans to average", unit = "", dtype = int,
                                min_value = 1, display_level=DispLevel.OPERATOR,
                                access = AttrWriteType.READ_WRITE,
                                doc = "Number of scans to average over")
 
+    minIntegrationTime = attribute(label = "Minimum integration time",
+                                   unit = "micro seconds", dtype = int,
+                                   display_level=DispLevel.EXPERT,
+                                   access = AttrWriteType.READ,
+                                   doc = "Minimum integration time")
 
-    Spectrum = attribute(label = "Spectrum", unit = "",
+    maxIntegrationTime = attribute(label = "Maximum integration time",
+                                   unit = "micro seconds", dtype = int,
+                                   display_level=DispLevel.EXPERT,
+                                   access = AttrWriteType.READ,
+                                   doc = "Maximum integration time")
+
+    maxIntensity = attribute(label = "Maximum intensity", unit = "micro seconds", dtype = int,
+                                   display_level=DispLevel.EXPERT,
+                                   access = AttrWriteType.READ,
+                                   doc = "Maximum intensity")
+
+    spectrum = attribute(label = "Spectrum", unit = "",
                          display_level=DispLevel.OPERATOR,
                        	 dtype=[int,],
                          max_dim_x=3645, max_dim_y=0,
@@ -91,7 +118,11 @@ class OceanOptics(Device):
         self.set_status("Device in init!")
         try:
             self.Spectrometer.__init__()
-            self.Spectrometer.OpenSpectrometer(self.serial_port)
+            self.Spectrometer.OpenSpectrometer('HR4C5720')
+            self.index = self.read_index()
+            self.integrationTime = self.read_integrationTime()
+            self.darkCorrection = self.read_darkCorrection()
+            self.scansToAverage = self.read_scansToAverage()
             self.set_state(PyTango.DevState.ON)
             self.set_status("Device is ON!")
             print("Device is now turned on")
@@ -100,51 +131,67 @@ class OceanOptics(Device):
             self.set_state(DevState.FAULT)
             self.set_status("Device could not initialize!")
 
+    def OpenSpectrometer(self):
+        try:
+            self.Spectrometer.OpenSpectrometer('HR4C5720')
+        except Exception:
+            self.set_state(PyTango.DevState.FAULT)
+            self.set_status("Failed to open spectrometer. Device is in fault!")
 
-    def read_Index(self):
+    def read_index(self):
         return self.Spectrometer.GetDeviceIndex()
 
-    def read_IntegrationTime(self):
+    def read_integrationTime(self):
         return self.Spectrometer.GetIntegrationTime()
 
-    def write_IntegrationTime(self, T):
+    def write_integrationTime(self, T):
         self.Spectrometer.SetIntegrationTime(T)
 
-    def read_DarkCorrection(self):
-        return bool(self.Spectrometer.GetCorrectForElectricalDark())
+    def read_darkCorrection(self):
+        return self.Spectrometer.GetCorrectForElectricalDark()
 
-    def write_DarkCorrection(self, onoff):
+    def write_darkCorrection(self, onoff):
         self.Spectrometer.SetCorrectForElectricalDark(onoff)
 
-    def read_NonLinearityCorrection(self):
-        return bool(self.Spectrometer.GetCorrectForDetectorNonlinearity())
+    def read_nonLinearityCorrection(self):
+        return self.Spectrometer.GetCorrectForDetectorNonlinearity()
 
-    def write_NonLinearityCorrection(self, onoff):
+    def write_nonLinearityCorrection(self, onoff):
         self.Spectrometer.SetCorrectForDetectorNonlinearity(onoff)
 
-    def read_StrayLightCorrection(self):
-        return bool(self.Spectrometer.GetCorrectForStrayLight())
+    def read_strayLightCorrection(self):
+        return self.Spectrometer.GetCorrectForStrayLight()
 
 
 
-    def read_ScansToAverage(self):
+    def read_scansToAverage(self):
         return self.Spectrometer.GetScansToAverage()
 
-    def write_ScansToAverage(self, number):
+    def write_scansToAverage(self, number):
         self.Spectrometer.SetScansToAverage(number)
 
+    def read_minIntegrationTime(self):
+        return self.Spectrometer.GetMinimumIntegrationTime()
 
+    def read_maxIntegrationTime(self):
+        return self.Spectrometer.GetMinimumIntegrationTime()
 
+    def read_maxIntensity(self):
+        return self.Spectrometer.GetMaximumIntensity()
 
-    def read_IsSpectrumValid(self):
+    def read_isSpectrumValid(self):
         return self.Spectrometer.IsSpectrumValid()
 
-    def read_IsSaturated(self):
+    def read_isSaturated(self):
         return self.Spectrometer.IsSaturated()
 
-   
+    def read_isTimeoutOn(self):
+        return self.Spectrometer.IsTimeout()
 
-    def read_Spectrum(self):
+    def write_TimeoutDuration(self, msec):
+        self.Spectrometer.IsTimeout(msec)
+
+    def read_spectrum(self):
         return self.Spectrometer.GetSpectrum()
 
     def read_Wavelengths(self):

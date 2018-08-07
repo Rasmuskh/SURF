@@ -7,6 +7,8 @@
 *.dll
 *.o
 *.gz
+*.odg
+*.odf
 *OmnidriverSamples*
 
 

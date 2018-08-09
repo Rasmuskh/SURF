@@ -31,7 +31,7 @@ class Cornerstone(Device):
 
     shutter = attribute(label = "Shutter status",
                         display_level=DispLevel.OPERATOR,
-                        min_value = 1, max_value = 2,
+                        min_value = 0, max_value = 1,
                         dtype = int, access = AttrWriteType.READ_WRITE,
                         doc = "Shutter can be either open=1 or closed=0.")
 
@@ -62,14 +62,14 @@ class Cornerstone(Device):
     def write_shutter(self, n):
         if n == 0:
             self.Mono.close_shutter()
-        if n == 1:
+        elif n == 1:
             self.Mono.open_shutter()
         else:
             raise ValueError
-    def open_shutter(self):
-        self.Mono.open_shutter()
-    def close_shutter(self):
-        self.Mono.close_shutter()
+    # def open_shutter(self):
+    #     self.Mono.open_shutter()
+    # def close_shutter(self):
+    #     self.Mono.close_shutter()
 
 
     def read_wavelength(self):

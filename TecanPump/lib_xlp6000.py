@@ -3,16 +3,40 @@ import serial
 
 
 class Pump:
-    #command sender
+    #command helper function
     def command(self, cmd):
         self.ser.write(self.port+cmd+"R\r")
         self.ser.readlines()
+    #query helper function
+    def query(self, q):
+        self.ser.write(self.port+q+"R\r")
+        response = self.ser.readlines()
+        return response[0][4:-3]
+
+    #===========================#
+    #Pump Configuration Commands#
+    #===========================#
+    #Toggle microstep mode off/on
+    def microstep_mode(self, n):
+        cmd = "N%s" %n
+        self.command(cmd)
+    def backlash_increments(n):
+        cmd = "K%s" %n
+        self.command(cmd)
+
+
+
+
+
+
+
     #=======================#
     #Initialization Commands#
     #=======================#
     #Constructor
     def __init__(self,port = "/1", polarity=0):
         self.port = port
+        print("port")
         self.ser = serial.Serial(port = '/dev/ttyUSB0',
                     baudrate = 9600,      
                     bytesize = serial.EIGHTBITS,
@@ -20,8 +44,10 @@ class Pump:
                     stopbits = serial.STOPBITS_ONE,                         
                     timeout = 2)               
         if polarity == 0:
+            print("clockwise")
             self.init_plunger_and_valve_clockwise()
         if polarity == 1:
+            print("counter clockwise")
             self.init_plunger_and_valve_counterclockwise()
 
     
@@ -54,10 +80,10 @@ class Pump:
     #=========================#
     #Plunger Movement Commands#
     #=========================#
-    def absolute_pos(self,n):
+    def move_plunger_absolute_position(self,n):
         cmd = "A%s" %n
         self.command(cmd)
-    def move_relative_pos(self,n):
+    def move_plunger_relative_position(self,n):
         if n<0:
             n = abs(n)
             cmd = "P%s" %n
@@ -74,10 +100,13 @@ class Pump:
     def set_start_speed(self, n):
         cmd = "v%s" %n
         self.command(cmd)
-    def set_top_speed_during(self, n):
+    def set_top_speed(self, n):
         cmd = "V%s" %n
         self.command(cmd)
-    def set_speed_prior(self, n):
+    def set_cutoff_speed(self, n):
+        cmd = "c%s" %n
+        self.command(cmd)
+    def set_speed(self, n):
         cmd = "S%s" %n
         self.command(cmd)
 
@@ -90,13 +119,8 @@ class Pump:
     #===============#
     #Report Commands#
     #===============#
-    #query helper function
-    def query(self, q):
-        self.ser.write(self.port+q+"R\r")
-        response = self.ser.readlines()
-        return response[0][4:-3]
     #queries
-    def get_abs_plunger_pos(self):
+    def get_absolute_plunger_position(self):
         return self.query("?")
     def get_start_speed(self):
         return self.query("?1")

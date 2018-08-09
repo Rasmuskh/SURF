@@ -17,6 +17,9 @@ class Mono:
         self.error_checker()
 
 
+    #def close_serialport(self):
+    #    self.ser.close()
+
     def read_buffer(self):
         return self.ser.readline()
 
@@ -25,50 +28,47 @@ class Mono:
     def get_error_msg(self):
         self.ser.write("ERROR?\n")
         response = self.ser.readlines()
-        print(response)
         echo, errorcode_string = response
         errorcode = int(errorcode_string[0:1])
         if errorcode ==1:
-            error_msg = "Command not understood."
+            error_msg = "Error message: Command not understood."
         elif errorcode == 2:
-            error_msg = "Bad parameter used in Command."
+            error_msg = "Error message: Bad parameter used in Command."
         elif errorcode == 3:
-            error_msg = "Destination position for wavelength motion not allowed."
+            error_msg = "Error message: Destination position for wavelength motion not allowed."
         elif errorcode == 6:
-            errormsg = "Accessory not present (usually filter wheel)."
+            errormsg = "Error message: Accessory not present (usually filter wheel)."
         elif errorcode == 7:
-            errormsg = "Accessory already in specified position."
+            errormsg = "Error message: Accessory already in specified position."
         elif errorcode == 8:
-            errormsg = "Could not home wavelength drive."
+            errormsg = "Error message: Could not home wavelength drive."
         elif errorcode == 9:
-            errormsg = "Label too long."
+            errormsg = "Error message: Label too long."
         elif errorcode == 0:
-            errormsg = "System error (miscellaneous)."
+            errormsg = "Error message: System error (miscellaneous)."
         else:
-            error_msg = "Unknown error code: %s" %errorcode
+            error_msg = "Error message: Unknown error code: %s" %errorcode
         return error_msg
     #Get status byte
     def get_STB(self):
         self.ser.write("STB?\n")
         response = self.ser.readlines()
-        #print(response)
         echo, STB_string = response
         STB = int(STB_string[0:1])
         return STB
     #check for errors
     def error_checker(self):
         STB = self.get_STB()
-        #print('status byte = %d' %STB)
         if STB == 0:
-            print("Status byte reports no error!")
+            return 0
         else:
-            error_msg=self.get_error_msg()
-            print(error_msg)
+            print(self.get_error_msg())
+            raise Exception
 
     #get and set wavelength
     def set_wavelength(self, wavelength):
         self.ser.write("GOWAVE %d\n" %wavelength)
-        print('set wavelength response', self.ser.readlines())
+        response = self.ser.readlines()
         self.error_checker()
     def get_wavelength(self):
         self.ser.write("WAVE?\n")
@@ -81,13 +81,13 @@ class Mono:
     #stop any wavelength adjustment immediately
     def abort(self):
         self.ser.write('ABORT\n')
-        print(self.ser.readlines())
+        response = self.ser.readlines()
         self.error_checker()
 
     #change the wavelength by some steps between -9999 and 9999
     def set_step(self, n):
         self.ser.write("STEP %d\n" %n)
-        print(self.ser.readlines())
+        response = self.ser.readlines()
         self.error_checker()
     def get_step(self):
         self.ser.write("STEP?\n")
@@ -100,11 +100,11 @@ class Mono:
     #shutter control
     def close_shutter(self):
         self.ser.write("SHUTTER C\n")
-        print(self.ser.readlines())
+        response = self.ser.readlines()
         self.error_checker()
     def open_shutter(self):
         self.ser.write("SHUTTER O\n")
-        print(self.ser.readlines())
+        response = self.ser.readlines()
         self.error_checker()
     def get_shutter(self):
         self.ser.write("SHUTTER?\n")
@@ -113,15 +113,16 @@ class Mono:
         shutter = shutter[0]
         self.error_checker()
         if shutter == 'O':
-            return 'Shutter is open'
+            return 1
         elif shutter == 'C':
-            return 'shutter is closed'
+            return 0
+
 
     #Switch between grating number one and two
     def set_grating(self, grating_number):
         self.ser.write("GRAT %d\n" %grating_number)
         time.sleep(12)
-        print(self.ser.readlines())
+        response = self.ser.readlines()
         self.error_checker()
     def get_grating(self):
         self.ser.write("GRAT?\n")

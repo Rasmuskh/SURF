@@ -17,17 +17,12 @@ class Pump:
     #Pump Configuration Commands#
     #===========================#
     #Toggle microstep mode off/on
-    def microstep_mode(self, n):
+    def microstepmode(self, n):
         cmd = "N%s" %n
         self.command(cmd)
-    def backlash_increments(n):
+    def backlash_increments(self, n):
         cmd = "K%s" %n
         self.command(cmd)
-
-
-
-
-
 
 
     #=======================#
@@ -36,7 +31,7 @@ class Pump:
     #Constructor
     def __init__(self,port = "/1", polarity=0):
         self.port = port
-        print("port")
+        print(port)
         self.ser = serial.Serial(port = '/dev/ttyUSB0',
                     baudrate = 9600,      
                     bytesize = serial.EIGHTBITS,
@@ -48,7 +43,7 @@ class Pump:
             self.init_plunger_and_valve_clockwise()
         if polarity == 1:
             print("counter clockwise")
-            self.init_plunger_and_valve_counterclockwise()
+            self.init_plunger_and_valve_counter_clockwise()
 
     
     def init_plunger_and_valve_clockwise(self, n1=1, n2=1, n3=1):

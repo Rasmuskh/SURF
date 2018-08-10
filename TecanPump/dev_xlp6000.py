@@ -69,6 +69,30 @@ class xlp6000(Device):
                         access = AttrWriteType.READ,
                         doc="The voltage supplied to the pump.")
 
+    plunger_acceleration = attribute(label="Slope code",
+                                     display_level=DispLevel.OPERATOR,
+                                     unit = "2500pulses/s^2",
+                                     min_value =0,
+                                     max_value =7,
+                                     dtype = int,
+                                     access = AttrWriteType.READ_WRITE,
+                                     doc = "The slope code represents an acceleration.")
+    microstepmode = attribute(label="Microstemode status",
+                              display_level=DispLevel.OPERATOR,
+                              dtype = int,
+                              min_value=0,
+                              max_value=2,
+                              access = AttrWriteType.READ_WRITE,
+                              doc = "Toggle microstep mode on and off.")
+    number_of_backlash_increments = attribute(label="Backlash",
+                                              display_level=DispLevel.OPERATOR,
+                                              unit = "",
+                                              min_value =0,
+                                              max_value =248,
+                                              dtype = int,
+                                              access = AttrWriteType.READ_WRITE,
+                                              doc = "In fine positioning mode max is 248. in normal mode max is 31")
+
 
         
 
@@ -95,8 +119,10 @@ class xlp6000(Device):
     def read_start_speed(self):
         return int(self.pump.get_start_speed())
     def read_plunger_position(self):
-        #return int(self.pump.get_absolute_plunger_position())
-        return int(self.pump.get_actual_plunger_position())
+        #return int(self.pump.get_actual_plunger_position())
+        p = float(self.pump.get_actual_plunger_position())
+        p = int(6*float(p-1475))
+        return p
     def read_valve_position(self):
         response = self.pump.get_valve_position()
         if response == "i":
@@ -112,6 +138,13 @@ class xlp6000(Device):
         return self.pump.get_error_code()
     def read_voltage(self):
         return float(self.pump.get_voltage())/10
+    def read_plunger_acceleration(self):
+        return int(self.pump.get_slope_code_setting())
+    def read_microstepmode(self):
+        return int(self.pump.get_current_mode())
+    def read_number_of_backlash_increments(self):
+        return int(self.pump.get_number_of_backlash_increments())
+
     #write commands
     def write_top_speed(self, n):
         self.pump.set_top_speed(n)
@@ -128,8 +161,16 @@ class xlp6000(Device):
             self.pump.move_valve_to_output_port()
         elif n==2:
             self.pump.move_valve_to_bypass_position()
-    
-                        
+    def write_plunger_acceleration(self, n):
+        self.pump.set_slope(n)
+    def write_microstepmode(self,n):
+        self.pump.microstepmode(n)
+    def write_number_of_backlash_increments(self, n):
+        self.pump.backlash_increments(n)
+
+    @command
+    def terminate(self):
+        self.pump.terminate_current_command()
 
 
 

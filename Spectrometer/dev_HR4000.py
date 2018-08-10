@@ -6,7 +6,7 @@ from PyTango.server import command, attribute, device_property
 
 from PyOceansOpticsWrapper import OceansOpticsWrapper
 
-class OceanOptics(Device):
+class HR4000(Device):
     """Ocean Optics Spectrometer class"""
 
     __metaclass__ = DeviceMeta
@@ -167,4 +167,4 @@ class OceanOptics(Device):
 
 
 if __name__ == "__main__":
-    OceanOptics.run_server()
+    HR4000.run_server()

@@ -101,8 +101,9 @@ class xlp6000(Device):
         self.set_state(PyTango.DevState.INIT)
         self.set_status("Device in init!")
         try:
-            self.pump = lib_xlp6000.Pump(self.serial_port)
-            self.pump = lib_xlp6000.Pump()
+            self.pump = lib_xlp6000.Pump(serial_port=self.serial_port)
+            self.pump.move_valve_to_input_port()
+            self.pump.microstepmode=0
             self.set_state(PyTango.DevState.ON)
             self.set_status("Device is ON!")
             print("Device is now turned on")
@@ -119,9 +120,9 @@ class xlp6000(Device):
     def read_start_speed(self):
         return int(self.pump.get_start_speed())
     def read_plunger_position(self):
-        #return int(self.pump.get_actual_plunger_position())
-        p = float(self.pump.get_actual_plunger_position())
-        p = int(6*float(p-1475))
+        return int(self.pump.get_actual_plunger_position())
+        #p = float(self.pump.get_actual_plunger_position())
+        #p = int(6*float(p-1475))
         return p
     def read_valve_position(self):
         response = self.pump.get_valve_position()
@@ -171,7 +172,9 @@ class xlp6000(Device):
     @command
     def terminate(self):
         self.pump.terminate_current_command()
-
+    @command
+    def simulated_plunger_initialization(self):
+        self.pump.simulated_plunger_initialization()
 
 
 

@@ -5,11 +5,11 @@ import serial
 class Pump:
     #command helper function
     def command(self, cmd):
-        self.ser.write(self.port+cmd+"R\r")
+        self.ser.write(self.pump_port+cmd+"R\r")
         self.ser.readlines()
     #query helper function
     def query(self, q):
-        self.ser.write(self.port+q+"R\r")
+        self.ser.write(self.pump_port+q+"R\r")
         response = self.ser.readlines()
         return response[0][4:-3]
 
@@ -29,15 +29,16 @@ class Pump:
     #Initialization Commands#
     #=======================#
     #Constructor
-    def __init__(self,port = "/1", polarity=0):
-        self.port = port
-        print(port)
-        self.ser = serial.Serial(port = '/dev/ttyUSB0',
+    def __init__(self,serial_port='/dev/ttyUSB0', pump_port = "/1", polarity=0):
+        self.pump_port = pump_port
+        print(pump_port)
+        self.ser = serial.Serial(port = serial_port,
                     baudrate = 9600,      
                     bytesize = serial.EIGHTBITS,
                     parity = serial.PARITY_NONE,
                     stopbits = serial.STOPBITS_ONE,                         
-                    timeout = 2)               
+                    timeout = 2)
+	self.ser.readlines()               
         if polarity == 0:
             print("clockwise")
             self.init_plunger_and_valve_clockwise()

@@ -1,0 +1,26 @@
+This folder contains the manuals for all the devices
+as well as Tango classes and wrappers for some of them.
+
+The SURF_Tango_test.py script creates device proxies
+for all the tango devices I have written during this
+project, and prints some sample code to the user.
+
+Code Inventory:
+Monochromator:
+--dev_monochromator.py
+--lib_monochromator.py
+
+OceanOptics:
+--PyOceanOpticsWrapper.py (Written by Sylvio Haas)
+--dev_HR4000.py
+--dev_QE65000.py
+
+TecanPump:
+--dev_xlp6000.py
+--lib_xlp6000.py
+
+Known issues:
+--Timeout errors for monochromator and pumps when using
+Tango ATK panels
+--Pump plunger position is not read in the same units
+as it is written in.

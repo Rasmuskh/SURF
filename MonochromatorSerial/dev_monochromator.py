@@ -9,7 +9,7 @@ import lib_monochromator as lm
 class Cornerstone(Device):
     __metaclass__ = DeviceMeta
     #properties
-    serial_port = device_property(dtype = str, default_value= "/dev/ttyUSB0")
+    serial_port = device_property(dtype = str, default_value= "/dev/ttyUSB1")
 
     #attributes
     wavelength = attribute(label = "Wavelength", unit ="nm",
@@ -41,7 +41,7 @@ class Cornerstone(Device):
         self.set_state(PyTango.DevState.INIT)
         self.set_status("Device in init!")
         try:
-            self.Mono = lm.Mono(self.serial_port)
+            self.Mono = lm.Mono(serial_port=self.serial_port)
             self.set_state(PyTango.DevState.ON)
             self.set_status("Device is ON!")
             print("Device is now turned on")

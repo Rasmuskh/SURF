@@ -1,0 +1,3535 @@
+<!DOCTYPE html PUBLIC "//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="ContentType" content="Product Documentation">
+<meta name="ProductCategories" content="5495">
+<title>NI-DAQmx 18.0 Readme</title>
+<style>
+/***************************************************/
+/* MINIMAL STYLES */
+/* The following section defines styles that every HTML Help project should
+need. */
+
+/* The default style of P is red to alert you that you need to apply a style
+class, such as Body. */
+P { margin-top:6.00pt; margin-bottom:6.00pt; font-family:Verdana; font-size:8pt;
+color: #FF0000; }
+
+BR { font-size:4.00pt; }
+
+/* Use H1 for all topic headings. */
+H1 { margin-top:3.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:12pt; font-weight:bold;  }
+
+/* Use H2 for second-level headings. */
+H2 { margin-top:9.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:10pt; font-weight:bold;  }
+
+/* Use H3 for third-level headings. */
+H3 { margin-top:6.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:8pt; font-weight:bold;  }
+
+/* Use H4 for fourth-level headings. */
+H4 { margin-top:3.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:8pt; font-weight:bold;  }
+
+/* H5 and H6 have the same definition as H4 because you should not need this
+level of heading in one topic. If you need to use H5 or H6, consider breaking up
+your topic into more than one topic. */
+H5 { margin-top:3.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:8pt; font-weight:bold;  }
+H6 { margin-top:3.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:8pt; font-weight:bold;  }
+
+/* Use the Body style class for normal paragraphs. */
+P.Body { margin-top:6.00pt; margin-bottom:6.00pt; font-family:Verdana;
+font-size:8pt; color:black;  }
+
+/* Use the Anchor style class for graphic references on a line by themselves. */
+P.Anchor { margin-top:6.00pt; margin-bottom:6.00pt; font-family:Verdana;
+font-size:10pt; color:black;  }
+
+/* Use the Indent style classes to indent a paragraph. If you need to indent
+text below a list item, use <br><br> to start the new paragraph within the same
+set of <li></li> tags. If you need to indent a list within another list, nest
+the indented list within the first list's set of <ol></ol> or <ul></ul> tags. */
+P.Indent1 { margin-left:12.00pt; margin-top:6.00pt; margin-bottom:3.00pt;
+font-family:Verdana; font-size:8pt; color:black;  }
+P.Indent2 { margin-left:24.00pt; margin-top:6.00pt; margin-bottom:3.00pt;
+font-family:Verdana; font-size:8pt; color:black;  }
+P.Indent3 { margin-left:36.00pt; margin-top:6.00pt; margin-bottom:3.00pt;
+font-family:Verdana; font-size:8pt; color:black;  }
+
+/* Use the LI style for all list items. */
+LI { margin-top:3.00pt; margin-bottom:3.00pt; font-family:Verdana;
+font-size:8pt; color:black; }
+
+/* Use the OL style for numbered lists. You do not have to type the number for
+each list item in a numbered list. */
+OL { margin-left:18.00pt; margin-top:3.00pt; margin-bottom:3.00pt;
+text-indent:0pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-type: decimal; }
+
+/* Use the EquationNum style class for numbered lists of equations. You do not
+have to type the number for each list item in a numbered list. */
+OL.EquationNum { margin-left:36.00pt; margin-top:3.00pt; margin-bottom:3.00pt;
+text-indent:0pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-type: decimal; }
+
+/* Use the List-abc style class for lettered lists. You do not have to type the
+letter for each list item in a lettered list. */
+OL.List-abc { margin-left:18.00pt; margin-top:3.00pt; margin-bottom:3.00pt;
+text-indent:0pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-type:lower-alpha; }
+
+/* Use the UL style for bulleted lists. You do not have to type the bullet for
+each list item in a bulleted list. */
+UL { margin-left:12.00pt; text-indent:0pt; margin-top:3.00pt;
+margin-bottom:3.00pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-type: disc; }
+
+/* Use the List-Box style class for bulleted lists with boxes instead of
+bullets. You do not have to type the box for each list item in a box list. */
+UL.List-Box { margin-left:12.00pt; margin-top:3.00pt; margin-bottom:3.00pt;
+text-indent:0pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-type: square; }
+
+/* Use the List-Diamond style class for bulleted lists with diamonds instead of
+bullets. You do not have to type the diamond for each list item in a diamond
+list. */
+UL.List-Diamond { margin-left:12.00pt; margin-top:3.00pt; margin-bottom:3.00pt;
+text-indent:0pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-image:url(diamond.gif); }
+
+/* Use the List-Hyphen style class for bulleted lists with hyphens instead of
+bullets. You do not have to type the hyphen for each list item in a hyphen list.
+*/
+UL.List-Hyphen { margin-left:12.00pt; margin-top:3.00pt; margin-bottom:3.00pt;
+text-indent:0pt; font-family:Verdana; font-size:8pt; color:black;
+list-style-image:url(hyphen.gif); }
+
+/* Use the Borderless style class for tables that do not need borders, such as
+for 2-column or 3-column lists with no headings. */
+Table.Borderless { border:none; }
+
+/* Use the Bordered style class for tables that need borders. */
+Table.Bordered { border-width: 1pt; border-style: solid; border-color: black;
+border-collapse: collapse; }
+
+/* Use the Borderless-Wide style class for tables that do not need borders and
+that you want to stretch to fill the entire topic width. */
+Table.Borderless-Wide { border:none; width:100%; }
+
+/* Use the Bordered-Wide style class for tables that need borders and that you
+want to stretch to fill the entire topic width. */
+Table.Bordered-Wide { border-width: 1pt; border-style: solid; border-color:
+black; width:100%; border-collapse: collapse; }
+
+/* Use the TD style for table cells in Borderless or Borderless-Wide tables. */
+TD { font-family:Verdana; font-size:8pt; color:black; vertical-align:top;
+padding:3px; }
+
+/* Use the Bordered style class for table cells in Bordered or Bordered-Wide
+tables. */
+TD.Bordered { font-family:Verdana; font-size:8pt; color:black;
+vertical-align:top; border-width: 1pt; border-style: solid; border-color: black;
+}
+
+/* Use the Icon style class for table cells that contain note, caution, warning,
+or tip icons, or LabVIEW datatype terminals. */
+TD.Icon { width:40px; vertical-align:top; }
+
+/* Use the Table-cell-8pt style class for table cells in tables that contain a
+lot of information and need smaller text to fit it all on one screen to prevent
+a horizontal scroll bar from appearing. */
+TD.Table-cell-8pt { font-family:Verdana; font-size:7pt; color:black;  }
+
+/* Use the TH style for table heading cells in Borderless or Borderless-Wide
+tables. */
+TH { font-family:Verdana; font-size:8pt; color:black; font-weight:bold;
+padding:3px; }
+
+/* Use the Bordered style class for table heading cells in Bordered or
+Bordered-Wide tables. */
+TH.Bordered { font-family:Verdana; font-size:8pt; color:black; font-weight:bold;
+border-width: 1pt; border-style: solid; border-color: black; }
+
+/* Use the Table-cell-8pt style class for table heading cells in tables that
+contain a lot of information and need smaller text to fit it all on one screen
+to prevent a horizontal scroll bar from appearing. */
+TH.Table-Head-8pt { font-family:Verdana; font-size:7pt; color:black;
+font-weight:bold; }
+
+/* Use the Left-Align style class for table heading cells that you want to left
+align instead of center align. */
+TH.Left-Align { font-family:Verdana; font-size:8pt; color:black;
+font-weight:bold; padding:3px; text-align:left; }
+
+/***************************************************/
+/* CHARACTER FORMATS */
+/* The following section defines character formats that every HTML Help project
+should need. */
+
+/* Use the Dark-Red format for warnings or cautions. */
+#Dark-Red { color: #800000 }
+
+/* Use the Monospace format for code or syntax examples. */
+#Monospace { font-family: Courier New; font-size: 8pt; }
+
+/* Use the Monospace-Bold format for messages and responses that the computer
+automatically prints to the screen. */
+#Monospace-Bold { font-family: Courier New; font-size: 8pt; font-weight: bold; }
+
+/* Use the Monospace-Italic format to denote text that is a placeholder for a
+word or value that the user must supply. */
+#Monospace-Italic { font-family: Courier New; font-size: 8pt; font-style:
+italic; }
+
+/* Use the Platform format to denote a specific platform. */
+#Platform { color: #0000FF; font-weight: bold; }
+
+/* Use the Symbol format for characters not in the Verdana character set. Use
+this format sparingly. When possible, you should use the correct ASCII code for
+the symbol or use a graphic to recreate the symbol. */
+#Symbol { font-family: Symbol; font-size: 8pt; }
+
+/* CHARACTER FORMATS Updated to conform with the CSE HTML Validator Pro */
+/* The following section defines character formats that every HTML Help project
+should need. */
+
+/* Use the Dark-Red format for warnings or cautions. */
+.Dark-Red { color: #800000 }
+
+/* Use the Monospace format for code or syntax examples. */
+.Monospace { font-family: Courier New; font-size: 8pt; }
+
+/* Use the Monospace-Bold format for messages and responses that the computer
+automatically prints to the screen. */
+.Monospace-Bold { font-family: Courier New; font-size: 8pt; font-weight: bold; }
+
+/* Use the Monospace-Italic format to denote text that is a placeholder for a
+word or value that the user must supply. */
+.Monospace-Italic { font-family: Courier New; font-size: 8pt; font-style:
+italic; }
+
+/* Use the Platform format to denote a specific platform. */
+.Platform { color: #0000FF; font-weight: bold; }
+
+/* Use the Symbol format for characters not in the Verdana character set. Use
+this format sparingly. When possible, you should use the correct ASCII code for
+the symbol or use a graphic to recreate the symbol. */
+.Symbol { font-family: Symbol; font-size: 8pt; }
+
+/* Use the Red-text format to call attention to text that needs  information
+added or edited by techcomm */
+.Red-text {color: #FF0000;}
+
+/* Use the Green-Underline format for the green defintion in the conventions
+topic */
+.Green-Underline {color: #007700;	text-decoration : underline;}
+
+/* Use the glossButton format for the glossary buttons used in the glossary
+topic */
+.glossButton { font-family:Verdana, sans-serif; font-size:12px; color:black; }
+
+/* Use for text sections and hyphenated words that should not break at line
+wraps */
+span.nobreak{white-space:nowrap}
+
+/* The following styles define the color of links. */
+a:link { color: #007700 }
+a:hover { color: #FF0000 }
+a:active { color: #FF0000 }
+a:visited { color: #7F007F }
+
+/***************************************************/
+/* ACTIVITY STYLES */
+/* The following section defines styles that only tutorial-style HTML Help
+projects should need. */
+
+/* Use the Activity-Objective style class for the objective at the beginning of
+an activity topic. */
+H3.Activity-Objective { color: #800000; }
+
+/***************************************************/
+/* CODE STYLES */
+/* The following section defines styles that you need to format entire sections
+of code or syntax examples. If you have just a few words you need to format as a
+code or syntax example, use the Monospace character format. */
+
+P.Code { margin-top:3.00pt; margin-bottom:0.00pt; font-family:Courier New;
+font-size:8pt; color:black;  }
+P.Code1 { margin-left:12.00pt; margin-top:3.00pt; margin-bottom:0.00pt;
+font-family:Courier New; font-size:8pt; color:black;  }
+P.Code2 { margin-left:24.00pt; margin-top:3.00pt; margin-bottom:0.00pt;
+font-family:Courier New; font-size:8pt; color:black;  }
+P.Code3 { margin-left:36.00pt; margin-top:3.00pt; margin-bottom:0.00pt;
+font-family:Courier New; font-size:8pt; color:black;  }
+
+/***************************************************/
+/* FUNCTION STYLES */
+/* The following section defines styles that you might need to format function
+reference help. */
+
+P.F-VI-Code4 { margin-left:48.00pt; margin-top:3.00pt; margin-bottom:0.00pt;
+font-family:Courier New; font-size:8pt; color:black;  }
+P.F-VI-Code5 { margin-left:60.00pt; margin-top:3.00pt; margin-bottom:0.00pt;
+font-family:Courier New; font-size:8pt; color:black;  }
+P.F-VI-Equation { margin-top:9.00pt; margin-bottom:9.00pt; font-family:Verdana;
+font-size:8pt; color:black;  }
+
+OL.F-VI-EquationNum { margin-top:3.00pt; margin-bottom:3.00pt; text-indent:0pt;
+font-family:Verdana; font-size:8pt; color:black; list-style-type: decimal; }
+CITE.expandspot { font-style : normal;
+            color : green;
+            cursor: hand;}
+ .mvd-CITE-expandspot { font-style : normal;
+                 color : green;
+                 cursor: hand;}
+ DFN.collapsed { font-style : italic;
+                 font-weight : normal;
+                 display :      'none';
+                 color : red;}
+.mvd-DFN-collapsed { font-style : italic;
+                      font-weight : normal;
+                      display :      'none';
+                      color : red;}
+ DFN.expanded { font-style : italic;
+                 font-weight : normal;
+                color : red;}
+ .mvd-DFN-expanded { font-style : italic;
+                 font-weight : normal;
+                     color : red;}
+EM.dropspot	{ cursor : hand;
+ 		  color : green;}
+.mvd-EM-dropspot { cursor : hand;
+ 		  color : green;}
+</style>
+</head>
+<body>
+
+<h1>NI-DAQmx 18.0 Readme</h1>
+
+<p class="Body">May 2018</p>
+
+<p class="Body"> This file contains important information about 
+NI-DAQmx, including installation instructions and known issues. NI-DAQmx
+ 18.0 adds support for LabVIEW 2018 and LabVIEW NXG 2.1. </p>
+
+<p><a href="#overview">Overview</a></p>
+<p class="Body"><a href="#readmeUpdate">Readme Updates</a></p>
+
+<p class="Body"><a href="#sysRequire">System Requirements</a></p>
+<p class="Body"><a href="#opSys">Supported Operating Systems</a></p>
+<p class="Body"><a href="#niApp">Application Software Support</a></p>
+
+
+<p class="Body"><a href="#updates">Product Security and Critical Updates</a></p>
+<p class="Body"><a href="#New">New Features</a>
+
+</p><p class="Body"><a href="#devSupport">Device Support in NI-DAQmx</a></p>
+
+
+<p class="Body"><a href="#nidaqmxReadme">Known Issues</a></p>
+<!--<p><a href="#fixes">Bug Fixes</a></p> -->
+<p class="Body"><a href="#autoinstall">Automating the Installation of NI Products</a></p>
+<p><a href="#win10">Using NI Software with Microsoft Windows 10</a></p>
+<p class="Body"><a href="#win8">Using NI Software with Microsoft Windows 8.1</a></p>
+<p class="Body"><a href="#nxg">LabVIEW NXG Support and Considerations</a></p>
+<p class="Body"><a href="#daqexpress">DAQExpress Considerations</a></p>
+
+<p><a href="#legal">Legal Information</a></p>
+
+
+<h2><a name="overview">Overview</a></h2>
+<p class="Body">NI-DAQmx is the software you use to communicate with and control your NI data acquisition (DAQ) device. </p>
+
+
+<h2><a name="readmeUpdate">NI-DAQmx Readme Updates</a></h2>
+<p class="Body">Refer to the <a href="http://digital.ni.com/express.nsf/bycode/exbetk" target="_blank">NI website</a> for any updates to the current NI-DAQmx readme. </p>
+
+
+<h2><a name="sysRequire">System Requirements</a></h2>
+
+
+<table class="Bordered">
+<tbody><tr><th class="Bordered">System Use</th>
+<th class="Bordered">RAM</th>
+
+<th>Processor</th>
+</tr>
+
+<tr>
+<td class="Bordered">Development/Deployment</td>
+<td class="Bordered">1 GB (32-bit), 2 GB (64-bit)</td>
+<td class="Bordered">1 GHz or faster 32-bit (x86) or 64-bit (x64) processor</td>
+</tr>
+
+
+</tbody></table>
+
+
+<h2><a name="opSys">Supported Operating Systems</a></h2>
+
+<p class="Body">The following operating systems are supported by NI-DAQmx 18.0: </p>
+
+	<ul>
+    <li>Windows 10/8.1<sup>1</sup>/7 SP1<sup>2</sup> (32-bit<sup>3</sup> and 64-bit)</li>
+	<li>Windows Embedded Standard 7<sup>2</sup> SP1  (on CompactDAQ controllers)</li>
+	<li>Windows Server 2012 R2<sup>1</sup> (64-bit)</li>
+	<li>Windows Server 2008 R2<sup>1</sup> SP1 (64-bit, not supported on Server Core Role)</li>
+    
+	
+	
+
+</ul>
+
+
+
+  <p class="Body"><sup>1</sup> NI software installs  VC2015 Runtime and 
+.NET 4.6.2. Windows 8.1 and Windows Server 2012 R2 require Microsoft 
+updates to support these items. Refer to Microsoft <a href="http://digital.ni.com/express.nsf/bycode/expfcj" target="_blank">KB2919442</a> and <a href="http://digital.ni.com/express.nsf/bycode/exkd3p" target="_blank">KB2919355</a> for more information about how to install these  updates.</p>
+  
+  <p class="Body"><sup>2</sup> NI software is signed with a SHA-256 
+certificate. Windows 7 SP1, Windows Embedded Standard 7 SP1, and Windows
+ Server 2008 R2 SP1 require Microsoft updates to support SHA-256. Refer 
+to Microsoft <a href="http://digital.ni.com/express.nsf/bycode/exf7ig" target="_blank">KB3033929</a> for more information about how to install this security update.</p>
+  
+  <p class="Body"><sup>3</sup> LabVIEW NXG is supported only on 64-bit operating systems.</p>
+
+
+<p class="Body">To find and download an earlier version of NI-DAQmx that supports other operating systems, refer to <a href="http://www.ni.com/downloads/">ni.com/downloads</a>.</p>
+
+
+
+<h2><a name="niApp">Application Software Support</a></h2>
+<p class="Body">The following table lists the application software 
+versions supported by NI-DAQmx. If you are not using application 
+software, refer to <em>Microsoft Visual Studio Support</em>.</p>
+
+
+<table class="Bordered">
+
+  <tbody><tr>
+  <th class="Bordered">Application Software<sup>1</sup></th>
+  <th class="Bordered">Versions Supported by NI-DAQmx 18.0</th>
+
+
+  </tr>
+
+  <tr align="center">
+  <td class="Bordered" align="left">LabVIEW</td>
+  <td class="Bordered">2015, 2016, 2017, and 2018</td>
+
+
+  </tr>
+
+  <tr align="center">
+  <td class="Bordered" align="left"> LabVIEW Real-Time Module</td>
+  <td class="Bordered">2015, 2016, 2017, and 2018</td>
+
+
+
+  </tr>
+  
+  <tr align="center">
+  <td class="Bordered" align="left"> LabVIEW NXG</td>
+  <td class="Bordered">2.1</td> 
+</tr>
+
+<tr align="center">
+  <td class="Bordered" align="left"> DAQExpress<sup>2</sup></td>
+  <td class="Bordered">2.0<sup>2</sup></td> </tr>
+
+  <tr align="center">
+  <td class="Bordered" align="left">LabWindows™/CVI™</td>
+  <td class="Bordered">2012, 2013, 2015, and 2017</td>  
+  
+  </tr><tr align="center">
+  <td class="Bordered" align="left">LabWindows™/CVI™</td>
+  <td class="Bordered">2012, 2013, 2015, and 2017</td>
+
+
+  </tr>
+
+  <tr align="center">
+  <td class="Bordered" align="left">LabWindows/CVI Real-Time Module</td>
+  <td class="Bordered">2015 and 2017</td>
+
+
+  </tr>
+
+
+  <tr align="center">
+  <td class="Bordered" align="left">Measurement Studio</td>
+  <td class="Bordered"> 2012,  2013, and 2015</td>
+
+
+  </tr>
+
+  <tr align="center">
+  <td class="Bordered" align="left">SignalExpress</td>
+  <td class="Bordered">2015</td>
+  </tr>
+  
+ <tr>
+    <td colspan="2"><sup>1</sup> Application software support for 
+LabVIEW NXG is not included with NI-DAQmx and must be downloaded 
+separately via NI Package Manager. Refer to <a href="#installNXG">Installing NI-DAQmx for LabVIEW NXG</a> for instructions.  </td></tr>
+<tr>
+    <td colspan="2"><sup>2</sup> For a complete list of DAQExpress devices,  visit the <a href="http://digital.ni.com/express.nsf/bycode/ex69sp" target="_blank">DAQExpress Manual</a>. </td></tr>
+		
+
+
+
+</tbody></table>
+
+
+
+<h3><a name="VSSupport">Microsoft Visual Studio Support</a></h3>
+<p class="Body">The following table lists the programming languages and 
+Microsoft Visual Studio versions supported by this version of NI-DAQmx. 
+Earlier versions of NI-DAQmx support other application software and 
+language versions.</p>
+
+<table class="Bordered">
+
+  <tbody><tr>
+  <th class="Bordered">Programming Language</th>
+  <th class="Bordered">Visual Studio Versions Supported by NI-DAQmx</th>
+  </tr>
+
+  <tr align="center">
+  <td class="Bordered" align="left">ANSI C</td>
+  <td class="Bordered">2003, 2005,  2008, 2010, and 2012</td>
+  </tr>
+
+  
+  <tr align="center">
+  <td class="Bordered" align="left">.NET Framework 4.0 Languages<br>
+  (Visual C# .NET and Visual Basic .NET)</td>
+  <td class="Bordered">2010</td>
+  </tr>
+
+     <tr align="center">
+  <td class="Bordered" align="left">.NET Framework 4.5 Languages<br>
+  (Visual C# .NET and Visual Basic .NET)</td>
+  <td class="Bordered">2012</td>
+  </tr>
+  
+     
+    <tr align="center">
+  <td class="Bordered" align="left">.NET Framework 4.5.1 Languages<br>
+  (Visual C# .NET and Visual Basic .NET)</td>
+  <td class="Bordered">2013</td>
+  </tr>
+  
+  
+</tbody></table>
+
+
+
+<p class="Body">For information on Visual Studio compatibility with earlier versions of NI-DAQmx, refer to&nbsp;<a href="http://www.ni.com/info">ni.com/info</a>&nbsp;and enter the info code&nbsp;<span class="Monospace">NETlegacydrivers</span>. To find and download an earlier version of a driver, refer to <a href="http://www.ni.com/downloads">ni.com/downloads</a>. </p>
+
+
+<p class="Body">Support for 64-bit applications is available in  
+NI-DAQmx 9.2.3 and later for Visual Studio 2010 support,  NI-DAQmx 9.6.2
+ and later for Visual Studio 2012 support, and NI-DAQmx 14.5 and later 
+for Visual Studio 2013. </p>
+
+
+<p class="Body">For information on examples that use NI-DAQmx and Measurement Studio, refer to <em>Where to Find Examples</em> in the <em>NI-DAQmx .NET Class Library Help</em>.</p>
+
+  
+  <h2><a name="updates">Product Security  and Critical Updates</a></h2>
+  
+  <p class="Body">Visit <a href="http://www.ni.com/security" target="_blank">ni.com/security</a> to view and subscribe to receive security notifications about NI products. Visit <a href="http://ni.com/critical-updates" target="_blank">ni.com/critical-updates</a> for information about critical updates from NI.</p>
+  
+  <h2><a name="New">
+  New Features</a></h2>
+  
+  <ul>
+    <li>Added support for LabVIEW 2018 and LabVIEW NXG 2.1.</li>
+    
+
+</ul>
+  
+  
+  
+  
+  
+  
+  <h2><a name="devSupport">Device Support in NI-DAQmx</a></h2>
+  <p class="Body">The following lists detail devices supported in 
+NI-DAQmx and devices that are supported only on 32-bit versions of 
+Windows 10/8.1/7: </p>
+  
+  <ul><li><a href="#MXSupport">Devices Supported in NI-DAQmx</a></li>
+    <li><a href="#NoSupportVista">Devices Not Supported in NI-DAQmx on the 64-Bit Versions of Windows 10/8.1/7</a> </li>
+    <li><a href="#NoLongerSupported">Devices No Longer Supported</a> </li>
+  </ul>
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3><a name="MXSupport">Devices Supported in NI-DAQmx</a></h3>
+  <p class="Body">The following lists detail the devices supported in NI-DAQmx. Device support is divided into the following categories: </p>
+  
+  <p class="Body"><strong>Note</strong>&nbsp;&nbsp;In the device support
+ tables that follow, a ✓ indicates that the device is supported, and a 
+blank cell indicates that the device either does not exist or is not 
+supported in NI-DAQmx. </p>
+  <ul>
+    <li><a href="#FieldDAQ">FieldDAQ</a></li>
+    <li><a href="#CompactRIO">CompactRIO Controllers</a></li>
+    <li><a href="#XSeries">X Series DAQ</a></li>
+    <li><a href="#MSeries">M Series DAQ</a></li>
+    <li><a href="#ESeries">E Series DAQ</a></li>
+    <li><a href="#SSeries">S Series DAQ</a></li>
+    <li><a href="#SCExpress">SC Express</a></li>
+    <li><a href="#SCExpressAccesory">SC Express Accessories</a></li>
+    <li><a href="#CSeries">C Series, Network DAQ, and USB DAQ</a></li>
+    <li><a href="#cDAQ">CompactDAQ Chassis</a></li>
+    <li><a href="#cDAQSystem">CompactDAQ Controllers</a></li>
+    <li><a href="#AOSeries">AO Series</a></li>
+    <li><a href="#DIO">Digital I/O</a></li>
+    <li><a href="#TIO">TIO Series</a></li>
+    <li><a href="#DSA">Dynamic Signal Acquisition</a></li>
+    
+    <li><a href="#SCSeries">SC Series DAQ</a></li>
+    <li><a href="#Switches">Switches</a></li>
+    <li><a href="#SCXIChassis">SCXI Chassis</a></li>
+    <li><a href="#SCXIModules">SCXI Modules</a></li>
+    <li><a href="#TEDSInter">TEDS Interface</a></li>
+    <li><a href="#academic">Academic Devices</a></li>
+    <li><a href="#legacyDAQ">Legacy DAQ Devices</a></li>
+    <li><a href="#basic">Low-Cost USB Devices</a></li>
+    
+  </ul>
+  
+  <h3><a name="FieldDAQ">FieldDAQ</a></h3>
+  <p class="Body"><strong>Note</strong>&nbsp;&nbsp; Certain NI Linux Real-Time controllers, including the IC-317<em>x</em>,
+ cRIO-9035 Sync, cRIO-9039 Sync, and cDAQ-9132/9133/9134/9135/9136/9137,
+ meet the requirement to be used as a host for FieldDAQ. </p>
+  <ul>
+  	<li>FD-11603</li>
+    <li>FD-11613</li>
+    <li>FD-11637</li>
+</ul>
+    
+     <h3><a name="CompactRIO">CompactRIO Controllers</a></h3>
+ <p class="Body"><strong>Note</strong>&nbsp;&nbsp; For these 
+controllers, you must install both NI CompactRIO and NI-DAQmx. For 
+additional information on driver support, refer to <a href="http://digital.ni.com/express.nsf/bycode/softwareversion" target="_blank">Software Support for CompactRIO, CompactDAQ, Single-Board RIO, R Series, and EtherCAT</a>.  </p>
+  <ul>
+  	<li>cRIO-9040</li>
+    <li>cRIO-9041</li>
+    <li>cRIO-9042</li>
+    <li>cRIO-9043</li>
+    <li>cRIO-9045</li>
+    <li>cRIO-9046</li>
+    <li>cRIO-9047</li>
+    <li>cRIO-9048</li>
+    <li>cRIO-9049</li>
+    
+</ul>
+  
+<h3><a name="XSeries">X Series DAQ</a></h3>
+  
+  <p class="Body">The following X Series DAQ devices are supported: </p>
+  
+  
+  <table class="Bordered">
+    <tbody><tr>
+      <th class="Bordered">Device</th>
+      <th class="Bordered">PCIe</th>
+      <th class="Bordered">PXIe</th>
+      <th class="Bordered">USB</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6320</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6321</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6323</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6341</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6343</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6345</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+       
+    <tr class="DNL"><td class="Bordered">NI 6351</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6353</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6355</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6356</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6358</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6361</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6363</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6365</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6366</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6368</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6374</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6375</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6376</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6378</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+  </tbody></table>
+  
+  
+  <h3><a name="MSeries">M Series DAQ</a></h3>
+  
+  <p class="Body">The following M Series DAQ devices are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PCIe</th>
+      <th class="Bordered">PXI</th>
+      <th class="Bordered">PXIe</th>
+      <th class="Bordered">USB</th>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6210/11/12/15/16/18</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6220</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6221</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6224</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6225</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6229</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6230/32/33/36/38/39 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6250 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6251 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6254 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6255 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6259 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6280 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6281 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6284 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6289 </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr> 
+    
+  </tbody></table>
+  
+  <h3><a name="ESeries">E Series DAQ</a></h3>
+  
+  <p class="Body">The following E Series DAQ devices are supported.</p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PCMCIA</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PXI</th>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6023E</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6024E<sup>*</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6025E</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6030E</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6031E</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6032E/33E/34E/35E</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6036E<sup>*</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6040E/NI PCI-MIO-16E-4</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓ </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6052E</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6062E<sup>*</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6070E</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6071E</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI PCI-MIO-16E-1</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    
+    
+    <tr class="DNL"><td class="Bordered">NI PCI-MIO-16XE-10</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI PCI-MIO-16XE-50</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    <tr>
+    <td colspan="4"> * Not supported on 64-bit versions of Windows 10/8.1/7</td></tr>
+    
+  </tbody></table>
+  
+  
+  <h3><a name="SSeries">S Series DAQ</a></h3>
+  <p class="Body">The following S Series DAQ devices are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PXI</th>
+      <th class="Bordered">PXIe</th>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6110</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6111</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6115</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6120</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6122</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6123</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6124</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6132</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6133</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6143</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6154</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    
+    
+  </tbody></table>
+  
+  <h3><a name="SCExpress">SC Express</a></h3>
+  <p class="Body">The following SC Express devices are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PXIe</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4300</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4302</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4303</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4304</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4305</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4309</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4310</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 4322</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4330</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4331</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4339</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4340</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4353</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4357</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+  </tbody></table>
+  
+  
+  
+  <h3><a name="SCExpressAccesory">SC Express Accessories</a></h3>
+  
+  <p class="Body">The following SC Express terminal blocks and other accessories are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">Supported Accessory</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4300</td>
+      <td class="Bordered" align="center">NI TB-4300, NI TB-4300B, NI TB-4300C, NI CAL-4300B </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4302</td>
+      <td class="Bordered" align="center">NI RM-4302, NI TB-4302, NI TB-4302C</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4303</td>
+      <td class="Bordered" align="center">NI RM-4302, NI TB-4302, NI TB-4302C</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4304</td>
+      <td class="Bordered" align="center">NI RM-4304, NI TB-4304</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4305</td>
+      <td class="Bordered" align="center">NI RM-4304, NI TB-4304</td>
+    </tr>
+    
+      <tr class="DNL"><td class="Bordered">NI 4309</td>
+      <td class="Bordered" align="center">NI CAL-4309, NI TB-4309 (ST), NI TB-4309 (MT)</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4310</td>
+      <td class="Bordered" align="center">NI TB-4310 (10V), NI TB-4310 (600V)</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4322</td>
+      <td class="Bordered" align="center">NI TB-4322</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4330</td>
+      <td class="Bordered" align="center">NI TB-4330, RM-24999</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4331</td>
+      <td class="Bordered" align="center">NI TB-4330, RM-24999</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4339</td>
+      <td class="Bordered" align="center">NI TB-4339, NI TB-4339B, NI TB-4339C, NI RM-4339</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4340</td>
+      <td class="Bordered" align="center">NI TB-4340</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4353</td>
+      <td class="Bordered" align="center">NI TB-4353, NI TC-4353, NI CAL-4353</td>
+    </tr>
+    <tr class="DNL"><td class="Bordered">NI 4357</td>
+      <td class="Bordered" align="center">NI TB-4357</td>
+    </tr>
+    
+  </tbody></table>
+  
+  
+  <h3><a name="CSeries">C Series, Network DAQ, and USB DAQ</a></h3>
+  <p class="Body">The following C Series, Network DAQ, and USB DAQ devices are supported: </p>
+  
+  
+  <table class="Bordered">
+    
+    <tbody><tr><th class="Bordered" rowspan="2">Device</th>
+      <th class="Bordered" rowspan="2">CompactDAQ Chassis</th>
+    <th class="Bordered" colspan="1">Legacy Chassis and Carriers</th></tr>
+    
+    <tr>
+      <th class="Bordered">NI USB-9162</th>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9201</td>
+      <td class="Bordered" align="center">✓</td>
+    
+      <td class="Bordered" align="center">✓</td>
+     
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9202</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9203</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9205</td>
+      <td class="Bordered" align="center">✓</td>
+          <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9206</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9207<sup>†</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9208<sup>†</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9209<sup>†</sup></td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9210</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9211<sup>* </sup></td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center">✓</td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9212</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9213</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9214</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9215<sup>* </sup></td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9216</td>
+      <td class="Bordered" align="center">✓</td>
+    
+      <td class="Bordered" align="center"> </td>
+    
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9217</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9218</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9219</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9220</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9221</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9222</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+   
+    </tr>
+    
+    <tr class="DNL">
+      
+      <td class="Bordered">NI 9223</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+     
+    </tr>
+    
+        <tr class="DNL">
+      
+      <td class="Bordered">NI 9224</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9225</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9226</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9227</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+      
+    </tr>
+    
+    
+        <tr class="DNL">
+      
+      <td class="Bordered">NI 9228</td>
+      <td class="Bordered" align="center">✓</td>
+    
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9229</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9230</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9232</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+     
+    </tr>
+    
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9234</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9235</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9236</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9237</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9237 (DSUB)</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9238</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9239</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9242</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9244</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9246</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9247</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9250</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+   
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9251</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9260</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9263</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9264</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9265</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center">✓</td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9269</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9344</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9361</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9375</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9401</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9402</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr>
+      <td class="Bordered">NI 9403</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9411</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9421</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9422</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9423</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9425<sup>†</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9426</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9435</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9436</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9437</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9469</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9472</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9474</td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9475</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9476<sup>†</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      
+      <td class="Bordered" align="center"> </td>
+     
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9477</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9478</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9481</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9482</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 9485</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"> </td>
+     
+    </tr>
+    
+      <tr class="DNL">
+      <td class="Bordered">NI 9775</td>
+      <td class="Bordered" align="center">✓</td>
+     
+      <td class="Bordered" align="center"></td>
+      
+    </tr>
+    
+    <tr>
+      
+    
+    </tr><tr><td colspan="5"> *  The NI USB-9211A and NI USB-9215A (C Series modules with a bundled NI USB-9162) are supported in NI-DAQmx. <br> The NI USB-9211 and NI USB-9215 (C Series modules with a bundled NI USB-9161) are not supported in NI-DAQmx.</td></tr>
+    
+    <tr>
+      <td colspan="5"> †  Spring Terminal variants are supported only in
+ NI-DAQmx 17.1 and later. For additional information on driver support, 
+refer to <a href="http://digital.ni.com/express.nsf/bycode/softwareversion" target="_blank">Software Support for CompactRIO, CompactDAQ, Single-Board RIO, R Series, and EtherCAT</a>.</td></tr>
+    
+    
+  </tbody></table>
+  
+  
+  <h3><a name="cDAQ">CompactDAQ Chassis</a></h3>
+  
+  <p class="Body">The following CompactDAQ chassis are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">CompactDAQ Chassis</th>
+    <th class="Bordered">Ethernet</th><th class="Bordered">USB</th> <th class="Bordered">Wireless</th> <th class="Bordered">LabVIEW Real-Time Module Version Support</th> </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9171</td><td class="Bordered" align="center"></td><td class="Bordered" align="center">✓</td>
+    <td class="Bordered" align="center"></td> <td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9174</td>
+    <td class="Bordered" align="center"></td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9178</td>
+    <td class="Bordered" align="center"></td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9179*</td>
+    <td class="Bordered" align="center"></td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9181<sup>‡</sup></td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9184<sup>‡</sup></td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td> </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9185<sup>†</sup></td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center"></td> <td class="Bordered" align="center">2015 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9188<sup>‡</sup></td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td> <td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9189<sup>†</sup></td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center"></td><td class="Bordered" align="center">2015 and later</td> </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9188XT<sup>‡</sup></td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td> <td class="Bordered" align="center"></td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9191</td>
+    <td class="Bordered" align="center">✓</td><td class="Bordered" align="center"></td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">2014 and later</td></tr>
+    
+    <tr>
+      <td colspan="5">* This device does not support Phar Lap. </td>
+      
+    </tr>
+	<tr>
+		<td colspan="5"> † Certain NI Linux Real-Time controllers, including the IC-317<em>x</em>,
+ cRIO-9035 Sync, cRIO-9039 Sync, and cDAQ-9132/9133/9134/9135/9136/9137 
+for LabVIEW Real-Time, meet the requirements to be used as a host for 
+these cDAQ chassis. These NI Linux Real-Time controllers cannot support C
+ Series modules in DAQmx mode. </td>
+	</tr>
+    
+    <tr>
+		<td colspan="5"> ‡ These devices are not supported by NI Linux Real-Time. </td>
+	</tr>
+    
+    
+    
+  </tbody></table>
+  
+  <h3><a name="cDAQSystem">CompactDAQ Controllers</a></h3>
+  <p class="Body">The following CompactDAQ controllers are supported: </p>
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">CompactDAQ Controllers</th>
+    <th class="Bordered">WES7</th> <th class="Bordered">Real Time</th></tr>
+    
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9132</td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9133</td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9134</td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9135</td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9136<sup>‡</sup></td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+      
+    </tr><tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9137<sup>‡ </sup></td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+        
+    </tr><tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9138</td><td class="Bordered" align="center">✓</td><td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered" align="left">NI cDAQ-9139</td><td class="Bordered" align="center">✓ </td><td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td colspan="3"> ‡ Real-time support for this controller was added in the LabVIEW Real-Time Module 2015. </td>
+    </tr>
+    
+  </tbody></table>
+  
+  
+  
+  
+  
+  
+  <h3><a name="AOSeries">AO Series</a></h3>
+  
+  <p class="Body">The following AO Series devices are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">DAQCard</th>
+      <th class="Bordered">PCIe</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PXI</th>
+      <th class="Bordered">PXIe</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6703</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      
+      
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6704</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6711</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr><td class="Bordered">NI 6713</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL">
+      <td class="Bordered">NI 6715<sup>*</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6722</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6723</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6731</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6733</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6738</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓ </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6739</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    
+    <tr>
+    <td colspan="6"> * Not supported on 64-bit versions of Windows 10/8.1/7</td></tr>
+    
+    
+  </tbody></table>
+  
+  
+  <h3><a name="DIO">Digital I/O</a></h3>
+  
+  <p class="Body">The following digital I/O devices are supported.</p>
+  
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">DAQCard</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PCIe</th>
+      <th class="Bordered">PXI</th>
+      
+      <th class="Bordered">PXIe</th>
+      <th class="Bordered">USB</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6501</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6503</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6508</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6509</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6510</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6511</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6512</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6513</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6514</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6515</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6516</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6517</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6518</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6519</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6520</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6521</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6525</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6527</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6528</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6529</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6533</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6534</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6535</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6535B<sup>*</sup></td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 6536</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6536B<sup>*</sup></td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6537</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6537B<sup>*</sup></td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI DIO-24<sup>†</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI DIO-32HS</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI DIO-96</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    
+    <tr><td colspan="7"> * Not supported on versions of Windows 10/8.1.</td></tr>
+    
+    <tr>
+    <td colspan="7">  †  Not supported on 64-bit versions of Windows 10/8.1/7</td></tr>
+    
+    
+  </tbody></table>
+  
+  
+  <h3><a name="TIO">TIO Series</a></h3>
+  
+  <p class="Body">The following TIO series devices are supported: </p>
+  
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PCIe</th>
+      <th class="Bordered">PXI</th>
+      <th class="Bordered">PXIe</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6601</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6602</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6608</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6612</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓  </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓ </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6614</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓ </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6624</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+  </tbody></table> 
+  
+  
+  <h3><a name="DSA">Dynamic Signal Acquisition (DSA)</a></h3>
+  
+  <p class="Body">The following DSA devices are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PXI</th>
+      <th class="Bordered">PXIe</th>
+      <th class="Bordered">USB</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4431</td>
+      <td class="Bordered" align="center"> </td>
+      
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4432</td>
+      <td class="Bordered" align="center"> </td>
+      
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4461</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4462</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4463</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> ✓ </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 4464</td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center"> ✓ </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 4472/B</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4474</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4480</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4481</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4492</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4495</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4496</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4497</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4498</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4499</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4610</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+    
+    
+  </tbody></table>
+  
+  <h3><a name="SCSeries">SC Series DAQ</a></h3>
+  
+  <p class="Body">The following SC Series DAQ devices are supported: </p>
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+    <th class="Bordered">PXI</th></tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4200</td>
+    <td class="Bordered" align="center">✓</td></tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4204</td>
+    <td class="Bordered" align="center">✓</td></tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4220</td>
+    <td class="Bordered" align="center">✓</td></tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4224</td>
+    <td class="Bordered" align="center">✓</td></tr>
+    
+  </tbody></table>
+  
+  
+  <h3><a name="Switches">Switches</a></h3>
+  
+  <p class="Body"><strong>Note</strong>&nbsp;&nbsp;As of NI-DAQmx 14.5, 
+the NI-DAQmx Switch API is obsolete and is no longer recommended for new
+ applications. For more information, refer to <a href="http://www.ni.com/info">ni.com/info</a> and enter the info code <span class="Monospace">switchdriverconsiderations</span>. </p> 
+  
+  <p class="Body">The following switches are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">PXI</th>
+      <th class="Bordered">PXIe</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 4021</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2501</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2503</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2510</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2512</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2514</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2515</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2520</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2521</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2522</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2523</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2527</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2529</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2530</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2531</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2532</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2533</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2534</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2535</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2536</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2540</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2541</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2542</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2543</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2544</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2545</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2546</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2547</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2548</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2549</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2554</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2555</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2556</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2557</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2558</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2559</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2564</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2565</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2566</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2567</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2568</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2569</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2570</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2571</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2575</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2576</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2584</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2585</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2586</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2590</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2591</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2593</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2594</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2595</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2596</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2597</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2598</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2599</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2720</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2722</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2725</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2727</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2800</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2790</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"></td>
+      <td class="Bordered" align="center">✓ </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2796</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓ </td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2797</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓ </td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2798</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓ </td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2799</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓ </td>
+      <td class="Bordered" align="center"></td>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI 2810</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2811</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2812</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2813</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2814</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2815</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2816</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2817</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2833</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2834</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 2865</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    
+  </tbody></table>
+  
+  <h3><a name="SCXIChassis">SCXI Chassis</a></h3>
+  
+  <p class="Body">The following SCXI Chassis are supported: </p>
+  
+  
+  
+  <ul><li>NI PXI-1010</li>
+    
+    <li>NI PXI-1011</li>
+    
+    <li>NI PXI-1050</li>
+    
+    <li>NI PXI-1052</li>
+    
+    <li>NI SCXI-1000/DC</li>
+    
+  <li>NI SCXI-1001</li></ul>
+  
+  <h3><a name="SCXIModules">SCXI Modules</a></h3>
+  
+  <p class="Body">The following SCXI modules are supported: </p>
+  
+  
+  <ul>
+    <li>NI SCXI-1100</li>
+    <li>NI SCXI-1102</li>
+    <li>NI SCXI-1102B/C</li>
+    <li>NI SCXI-1104/C</li>
+    <li>NI SCXI-1112</li>
+    <li>NI SCXI-1120/D</li>
+    <li>NI SCXI-1121</li>
+    <li>NI SCXI-1122</li>
+    <li>NI SCXI-1124</li>
+    <li>NI SCXI-1125</li>
+    <li>NI SCXI-1126</li>
+    <li>NI SCXI-1127</li>
+    <li>NI SCXI-1128</li>
+
+    <li>NI SCXI-1129</li>
+    <li>NI SCXI-1130</li>
+    <li>NI SCXI-1140</li>
+    <li>NI SCXI-1141</li>
+    <li>NI SCXI-1142</li>
+    <li>NI SCXI-1143</li>
+    <li>NI SCXI-1160</li>
+    <li>NI SCXI-1161</li>
+    <li>NI SCXI-1162</li>
+    <li>NI SCXI-1162HV</li>
+    <li>NI SCXI-1163</li>
+    <li>NI SCXI-1163R </li>
+    <li>NI SCXI-1166</li>
+    <li>NI SCXI-1167</li>
+    <li>NI SCXI-1169</li>
+    <li>NI SCXI-1175</li>
+    <li>NI SCXI-1190</li>
+    <li>NI SCXI-1191</li>
+    <li>NI SCXI-1192</li>
+    <li>NI SCXI-1193</li>
+    <li>NI SCXI-1194</li>
+    <li>NI SCXI-1195</li>
+    <li>NI SCXI-1314T</li>
+    <li>NI SCXI-1502</li>
+    <li>NI SCXI-1503</li>
+    <li>NI SCXI-1520</li>
+    <li>NI SCXI-1521/B</li>
+    <li>NI SCXI-1530</li>
+    <li>NI SCXI-1531</li>
+    <li>NI SCXI-1540</li>
+    <li>NI SCXI-1581</li>
+    <li>NI SCXI-1600 (Not supported on 64-bit versions of Windows 10/8.1/7)</li>
+  </ul>
+  
+  
+  <h3><a name="TEDSInter">TEDS Interface</a></h3>
+  <p class="Body">The following TEDS devices are supported: </p>
+  <div class="DNL">
+    <ul><li>NI SC-2350</li>
+      <li>NI BNC-2096</li>
+    <li>NI SCXI-1314T</li></ul>
+  </div>
+  
+  <h3><a name="academic">Academic Devices</a></h3>
+  <p class="Body">The following academic devices are supported: </p>
+  <div class="DNL">
+    <ul>
+      <li>NI ELVIS II</li>
+      <li>NI ELVIS II+</li>
+      <li>NI myDAQ</li>
+    </ul>
+  </div>
+  
+  <h3><a name="legacyDAQ">Legacy DAQ Devices</a></h3>
+  <p class="Body">The following legacy DAQ devices (also called B Series devices) are supported: </p>
+  
+  <table class="Bordered">
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">DAQ Pad</th>
+      <th class="Bordered">PCI</th>
+      <th class="Bordered">USB</th>
+    </tr>
+    
+    
+    <tr class="DNL"><td class="Bordered">NI DAQPad-6015<sup>*</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI DAQPad-6016<sup>*</sup></td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI PCI-6010</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI PCI-6013</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI PCI-6014</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+      <td class="Bordered" align="center"> </td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">SensorDAQ</td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center"> </td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr>
+    <td colspan="4"> * Not supported on 64-bit versions of Windows 10/8.1/7</td></tr>
+  </tbody></table>
+  
+  
+  <h3><a name="basic">Low-Cost USB </a></h3>
+  <p class="Body">The following low-cost USB devices (also called B Series devices) are supported:</p>
+  
+  <table class="Bordered">
+    
+    <tbody><tr><th class="Bordered">Device</th>
+      <th class="Bordered">USB</th>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6000</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6001</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6002</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6003</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6008</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI 6009</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+    <tr class="DNL"><td class="Bordered">NI TC01</td>
+      <td class="Bordered" align="center">✓</td>
+    </tr>
+    
+  </tbody></table>
+  
+  
+  <h2><a name="NoSupportVista">Devices Not Supported in NI-DAQmx on the 64-Bit Versions of Windows 10/8.1/7</a></h2>
+  
+  
+  <p class="Body">The following devices are supported in NI-DAQmx on the
+ 32-bit versions of Windows 10/8.1/7. They are not supported on the 
+64-bit versions of Windows 10/8.1/7:</p>
+  
+  
+  <ul>
+    <li>NI DAQCard-6024E 200 kS/s, 12-bit, 16 analog input channel, two 
+analog output channel, 8 digital I/O line, two counter/timer device</li>
+    <li>NI DAQCard-6036E 200 kS/s, 16-bit, 16 analog input channel, two 
+analog output channel, 8 digital I/O line, two counter/timer device</li>
+    <li>NI DAQCard-6062E 500 kS/s, 12-bit, 16 analog input channel device</li>
+    <li>NI DAQCard-6715 for PCMCIA 1 MS/s 12-bit analog output device</li>
+    <li>NI DAQCard-DIO-24 for PCMCIA 24-channel 5V/TTL/CMOS digital I/O device</li>
+    <li>NI DAQPad-6015 for USB</li>
+    <li>NI DAQPad-6015 for USB (BNC)</li>
+    <li>NI DAQPad-6015 for USB (Mass Termination)</li>
+    <li>NI DAQPad-6016 for USB</li>
+  <li>NI SCXI-1600 USB module</li></ul>
+  
+  
+  <h2><a name="NoLongerSupported">Devices No Longer Supported in NI-DAQmx</a> </h2>
+  
+  <p class="Body">Some devices are no longer supported in NI-DAQmx. Refer to <a href="http://digital.ni.com/express.nsf/bycode/extvrb" target="_blank">Devices No Longer Supported in NI-DAQmx 17.6 and Later</a> for specific devices and the versions in which support was dropped. </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  <h2><a name="nidaqmxReadme">Known Issues</a></h2>
+  <p class="Body">You can access the software and documentation known issues list online. Refer to the <a href="http://digital.ni.com/express.nsf/bycode/ex5ing" target="_blank">NI website</a> for an up-to-date list of known issues in NI-DAQmx. </p>
+  
+  <!--<h2><a name="fixes">Bug Fixes</a></h2>
+  <p class="Body">You can access the software and documentation bug fixes online. Refer to the <a href="http://venus.ni.com/product-documentation/54628/en/">NI website</a> for an up-to-date list, which includes the Corrective Action Request (CAR) ID and a description of the addressed issue. </p>
+  
+ <p class="Body">Refer to previous NI-DAQmx readmes, available on <a href="http://digital.ni.com/express.nsf/bycode/exd7hp" target="_blank">ni.com/drivers</a>, for issues fixed in earlier versions of NI-DAQmx.</p> -->
+  <h2><a name="autoinstall">Automating the Installation of NI Products</a></h2>
+  <p class="Body">You can automate the installation of most NI products 
+using command-line arguments to suppress some or all of the installer 
+user interface and dialog boxes. However, starting with the August 2012 
+releases (products using NI Installers version 3.1 or later), you may 
+need to perform additional steps before or during a silent installation 
+of NI software.</p>
+  
+  <p class="Body">If the NI product you are installing uses Microsoft 
+.NET 4.0, the .NET installer may run before any NI software installs and
+ may require a reboot before the installation of NI software begins. To 
+avoid a .NET reboot, install .NET 4.0 separately before you install NI 
+software.</p>
+  
+  <p class="Body">For more information about automating the installation of NI products, refer to the following KnowledgeBase articles:</p>
+  <ul>
+    <li>For more information about silent installations of individual NI products, refer to KB 4CJDP38M, <a href="http://digital.ni.com/express.nsf/bycode/InstallerAutomation" target="_blank">Automating the Installation of a Single Installer</a>.</li>
+    <li>For more information about silent installations of NI products in a suite, such as NI Developer Suite, refer to KB 4GGGDQH0, <a href="http://digital.ni.com/express.nsf/bycode/SuiteInstallerAutomation" target="_blank">How Do I Automate the Installation of a Suited Installer?</a>.</li>
+    <li>To determine what version of NI Installers your product contains, refer to KB 4CJDR18M, <a href="http://digital.ni.com/express.nsf/bycode/InstallerVersion" target="_blank">How Can I Determine the Type and Version of My National Instruments Installer?</a>.</li>
+  </ul>
+  
+  <h2><a name="win10">Using NI Software with Microsoft Windows 10</a></h2>
+  <p class="Body">Microsoft Windows 10 is the latest version of the 
+Windows operating system and features significant changes compared to 
+previous versions. Windows 10 introduces several new capabilities and 
+also combines features from both Windows 7 and Windows 8. For more 
+information about NI support for Windows 10, visit <a href="http://ni.com/windows10" target="_blank">ni.com/windows10</a>.</p>
+  
+  <h2><a name="win8">Using NI Software with Microsoft Windows 8.1</a></h2>
+  
+  <p class="Body">When you install NI software on Microsoft Windows 8.1,
+ you will notice a few additional tiles in the Apps view, including 
+shortcuts to NI application software products such as NI LabVIEW, 
+Measurement &amp; Automation Explorer (NI MAX), and NI Launcher. For 
+more information about NI support for Windows 8.1, visit <a href="http://ni.com/windows8" target="_blank">ni.com/windows8</a>.</p>
+  
+  <h2><a name="nxg">LabVIEW NXG Support and Considerations</a></h2>
+
+<p class="Body">The following sections detail considerations for using LabVIEW NXG with NI-DAQmx 18.0. </p>
+
+<h3>LabVIEW NXG  Operating Systems and System Requirements</h3>
+<p class="Body">Software support for LabVIEW NXG differs in the following way: </p>
+<ul>
+
+<li>Operating system—Only 64-bit operating systems are supported. Refer to the <a href="#opSys">Supported Operating Systems</a> section for more information.</li>
+</ul>
+
+ <p class="Body"><strong>Note</strong>&nbsp;&nbsp; Refer to the <em>LabVIEW NXG Readme</em> for additional system requirements. </p>
+
+<h3>LabVIEW NXG Hardware Support</h3>
+
+
+<p class="Body">The following devices are supported but must be configured in NI MAX: </p>
+<ul>
+
+<li><a href="#cDAQ">Ethernet compactDAQ chassis</a> </li>
+<li><a href="#FieldDAQ">FieldDAQ devices</a> </li> 
+
+</ul>
+
+<p class="Body">The following devices are not supported in LabVIEW NXG: </p>
+<ul>
+<li><a href="#CompactRIO">CompactRIO controllers</a></li>
+<li><a href="#SCXIChassis">SCXI chassis</a> and <a href="#SCXIModules">modules</a> </li>
+<li><a href="#Switches">Switches</a></li>
+<li><a href="#SCSeries">SC Series DAQ</a></li>
+<li>SensorDAQ</li>
+<li><a href="#ESeries">E Series</a></li>
+<li>NI ELVIS II/II+</li>
+<li><a href="#cDAQSystem">CompactDAQ controllers</a></li>
+<li><a href="#TEDSInter">TEDS Interface</a></li>
+<li><a href="#legacyDAQ">Legacy DAQ</a></li>
+<li><a href="#CSeries">NI USB-9162</a></li>
+<li>NI 4462</li>
+<li>NI 4472</li>
+<li><a href="#NoSupportVista">Devices supported only on 32-bit OSes</a></li>
+</ul>
+
+
+<h3><a name="installNXG"><span class="instructions">Installing NI-DAQmx for LabVIEW NXG</span></a></h3>
+  
+  <p class="Body">LabVIEW NXG is installed using NI Package Manager. Complete the following steps to install NI-DAQmx for LabVIEW NXG.</p>
+  <ol>
+<li>Visit <a href="http://ni.com/info" target="_blank">ni.com/info</a> and enter the info code <span class="instructions">NXGDownload</span> to access the LabVIEW NXG download page.</li>
+<li>Click <strong>Download LabVIEW NXG 2.0</strong>.</li>
+<li>NI Package Manager installs, then automatically opens a download window.</li>
+<li>Select <strong>LabVIEW NXG Suite</strong> and click the green <strong>Install</strong> button.</li>
+<li>Select <strong>LabVIEW NXG 2.0</strong> and <strong><span class="instructions">NI-DAQmx</span></strong>.</li>
+<li>Complete the installer instructions to download LabVIEW NXG  and <span class="instructions">NI-DAQmx</span>.</li>
+</ol>
+
+<h3>LabVIEW NXG Help</h3>
+<p class="Body">View context help in LabVIEW by pressing &lt;Ctrl-H&gt; and hovering over an object.</p>
+<p class="Body">Search for items using the search bar in the upper right
+ corner of the LabVIEW window. You can also view context help for the 
+search results.</p>
+<p class="Body">Additional documentation is available online at <a href="http://ni.com/manuals" target="_blank">ni.com/manuals</a>.</p>
+
+
+
+<h3>LabVIEW NXG Examples</h3>
+<p class="Body">Launch LabVIEW and click the <strong>Learning</strong> tab.</p>
+
+<p class="Body">LabVIEW lessons  are located in the <strong>Lessons</strong> tab, and LabVIEW Examples are located in the <strong>Examples</strong> tab. Follow the instructions in the lessons and examples.</p>
+
+<h2><a name="daqexpress">DAQExpress Considerations</a></h2>
+
+<p class="Body">For more information, including system requirements and 
+known issues, about DAQExpress, visit the DAQExpress Readme. For 
+supported hardware, visit the <a href="http://digital.ni.com/express.nsf/bycode/ex69sp" target="_blank">DAQExpress Manual</a>. </p>
+
+
+
+
+  
+  
+  
+  
+<hr>
+  <h2><a name="legal">Legal Information</a></h2>
+  
+  
+  <p class="Body"><strong>Copyright</strong></p>
+  <p class="Body">© 2003–2018 <a href="http://www.ni.com/">National Instruments</a>. All rights reserved.
+  </p>
+  
+  <p class="Body">Under the copyright laws, this publication may not be 
+reproduced or transmitted in any form, electronic or mechanical, 
+including photocopying, recording, storing in an information retrieval 
+system, or translating, in whole or in part, without the prior written 
+consent of National Instruments Corporation.</p>
+  
+  <p class="Body">NI respects the intellectual property of others, and 
+we ask our users to do the same. NI software is protected by copyright 
+and other intellectual property laws. Where NI software may be used to 
+reproduce software or other materials belonging to others, you may use 
+NI software only to reproduce materials that you may reproduce in 
+accordance with the terms of any applicable license or other legal 
+restriction.</p>
+  
+  <p class="Body"><strong>End-User License Agreements and Third-Party Legal Notices</strong></p>
+  <p class="Body">You can find end-user license agreements (EULAs) and third-party legal notices in the following locations after installation:</p>
+  <ul>
+    <li>Notices are located in the <span class="Monospace">&lt;National Instruments&gt;\_Legal Information</span> and <span class="Monospace">&lt;National Instruments&gt;</span> directories.</li> 
+    <li>EULAs are located in the <span class="Monospace">&lt;National Instruments&gt;\Shared\MDF\Legal\license</span> directory.</li>
+    <li>Review <span class="Monospace">&lt;National Instruments&gt;\_Legal Information.txt</span> for information on including legal information in installers built with NI products.</li>
+  </ul>
+  
+  <p class="Body"><strong>U.S. Government Restricted Rights</strong></p>
+  <p class="Body">If you are an agency, department, or other entity of 
+the United States Government ("Government"), the use, duplication, 
+reproduction, release, modification, disclosure or transfer of the 
+technical data included in this manual is governed by the Restricted 
+Rights provisions under Federal Acquisition Regulation 52.227-14 for 
+civilian agencies and Defense Federal Acquisition Regulation Supplement 
+Section 252.227-7014 and 252.227-7015 for military agencies.</p>
+  
+  <p class="Body"><strong>IVI Foundation Copyright Notice</strong></p>
+  
+  <p class="Body"><span class="DNL">Content from the IVI specifications reproduced with permission from the IVI Foundation.</span></p>
+  
+  <p class="Body"><span class="DNL">The IVI Foundation and its member 
+companies make no warranty of any kind with regard to this material, 
+including, but not limited to, the implied warranties of merchantability
+ and fitness for a particular purpose. The IVI Foundation and its member
+ companies shall not be liable for errors contained herein or for 
+incidental or consequential damages in connection with the furnishing, 
+performance, or use of this material.</span></p>
+  
+  <p class="Body"><strong>Trademarks</strong></p>
+  
+  
+  <p class="Body">Refer to the <em><span class="DNL">NI Trademarks and Logo Guidelines</span></em> at <a href="http://digital.ni.com/express.nsf/bycode/rdtrad" target="_blank"><span class="DNL">ni.com/trademarks</span></a> for information on <span class="DNL">NI</span> trademarks. Other product and company names mentioned herein are trademarks or trade names of their respective companies.</p>
+  
+  
+  <p class="Body"><span class="DNL">The mark LabWindows is used under a 
+license from Microsoft Corporation. Windows is a registered trademark of
+ Microsoft Corporation in the United States and other countries.</span></p>
+  
+  <p class="Body"><strong>Patents</strong></p>
+  <p class="Body">For patents covering the NI products/technology, refer to the appropriate location: <strong>Help»Patents</strong> in your software, the <span class="Monospace">patents.txt</span> file on your media, or the <em>National Instruments Patent Notice</em> at <a href="http://digital.ni.com/express.nsf/bycode/rdlv17" target="_blank">ni.com/patents</a>.</p>
+  
+  
+  
+  
+  
+  <p class="Body">374768V-01</p>
+
+
+</body></html>
